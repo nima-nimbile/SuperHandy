@@ -10,9 +10,11 @@ app.use(cors());
 app.use(express.json());
 
 const loginRoute = require("./routes/login");
+const registerRoute = require("./routes/register");
 
 
 app.use('/login', loginRoute);
+app.use('/register', registerRoute);
 
 
 app.listen(5000,()=>{

@@ -9,7 +9,7 @@ CREATE TABLE customers (
   phone_number VARCHAR(20),
   username VARCHAR(50) NOT NULL,
   password VARCHAR(255) NOT NULL,
-  address VARCHAR(255)
+  address VARCHAR(255) NOT NULL
 );
 
 CREATE TABLE handypersons (
@@ -20,7 +20,7 @@ CREATE TABLE handypersons (
   phone_number VARCHAR(20),
   username VARCHAR(50) NOT NULL,
   password VARCHAR(255) NOT NULL,
-  address VARCHAR(255),
+  address VARCHAR(255) NOT NULL,
   skill VARCHAR(50) NOT NULL,
   rating DECIMAL(3,2) DEFAULT 0.0 NOT NULL
 );

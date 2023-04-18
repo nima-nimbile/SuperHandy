@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import './register.scss';
+import { useNavigate } from "react-router-dom";
 
 const Register = () => {
   const [firstName, setFirstName] = useState('');
@@ -12,9 +13,11 @@ const Register = () => {
   const [address, setAddress] = useState('');
   const [userType, setUserType] = useState('');
   const [skill, setSkill] = useState('');
+  const navigate = useNavigate();
+  const [errorMessage, setErrorMessage] = useState('');
 
   const handleRegister = () => {
-    axios.post('/register', {
+    axios.post('http://localhost:5000/register', {
       firstName,
       lastName,
       email,
@@ -26,11 +29,14 @@ const Register = () => {
       skill
     })
     .then((response) => {
-      console.log(response.data.message);
-      // Redirect to appropriate dashboard based on userType
+      if (userType === 'customer') {
+        return navigate('/customer');
+      } else if (userType === 'handyperson') {
+        return navigate('/handyperson');
+      }
     })
     .catch((error) => {
-      console.log(error.response.data.message);
+      setErrorMessage('account already used');
     });
   }
 
@@ -71,6 +77,10 @@ const Register = () => {
           </>
         )}
         <button onClick={handleRegister}>Register</button>
+        <div>
+          <a href="/login" className="login">Already have account? go to login</a>
+        </div>
+        {errorMessage && <div className="error-message">{errorMessage}</div>}
       </div>
     </div>
   );
