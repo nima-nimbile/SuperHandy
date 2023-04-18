@@ -22,5 +22,5 @@ CREATE TABLE handypersons (
   password VARCHAR(255) NOT NULL,
   address VARCHAR(255),
   skill VARCHAR(50) NOT NULL,
-  rating DECIMAL(3,2) NOT NULL
+  rating DECIMAL(3,2) DEFAULT 0.0 NOT NULL
 );
