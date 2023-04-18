@@ -1,21 +1,28 @@
 import { useState } from 'react';
+import { useNavigate } from "react-router-dom";
 import axios from 'axios';
-import './login.css';
+import './login.scss';
 
 function Login() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [userType, setUserType] = useState('');
+  const [errorMessage, setErrorMessage] = useState('');
+  const navigate = useNavigate();
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    axios.post('/login', { email, password, userType })
-      .then((response) => {
-        console.log(response);
-        // Redirect the user to the appropriate page based on the server's response
-      })
+    axios.post('http://localhost:5000/login', { email, password, userType })
+    .then((response) => {
+      if (userType === 'customer') {
+        return navigate('/customer');
+      } else if (userType === 'handyperson') {
+        return navigate('/handyperson');
+      }
+    })
       .catch((error) => {
         console.error(error);
+        setErrorMessage('Invalid email, password, or user type.');
       });
   };
 
@@ -37,6 +44,7 @@ function Login() {
         <div>
           <a href="/register" className="login">Register</a>
         </div>
+        {errorMessage && <div className="error-message">{errorMessage}</div>}
       </form>
     </div>
   );
