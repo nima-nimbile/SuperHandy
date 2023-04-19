@@ -1,4 +1,4 @@
-import './App.css';
+
 import React, {Fragment} from 'react';
 import Navbar from './components/Navbar';
 

@@ -1,18 +1,30 @@
-const dotenv = require("dotenv")
+require('dotenv').config(); 
 const express = require("express");
 const app = express();
 const cors = require("cors");
 const db = require('./db');
-const { Pool } = require("pg");
-dotenv.config();
-// console.log(process.env.DB_PASS);
+const cookieSession = require('cookie-session');
+
+app.use(cookieSession({
+  name: 'session',
+  keys: ['bootcamp'],
+
+  // Cookie Options
+  maxAge: 24 * 60 * 60 * 1000 // 24 hours
+}))
+
 
 //middleware
 app.use(cors());
 app.use(express.json());
 
-//ROUTES//
+const loginRoute = require("./routes/login");
+const registerRoute = require("./routes/register");
+const handyDashRoute = require("./routes/handyDash");
 
+app.use('/login', loginRoute);
+app.use('/register', registerRoute);
+app.use('/handyDash', handyDashRoute);
 
 app.get("/hp/:id", async (req, res) => {
   try {
@@ -62,6 +74,7 @@ res.json(updatStatus)
   }
 })
 
-app.listen(5000, () => {
+
+app.listen(5000,()=>{
   console.log("server has started on port 5000");
-})  
+})

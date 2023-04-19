@@ -51,18 +51,3 @@ CREATE TABLE orders (
   handyperson_id INTEGER REFERENCES handypersons(id) ON DELETE CASCADE,
   task_id INTEGER REFERENCES tasks(id) ON DELETE CASCADE
 );
-
-INSERT INTO customers (id, first_name, last_name, email, phone_number, username, password, address)
-VALUES (1, 'nima', 'mo', 'nima@gmail.com', '60488855522', 'nemo', '123', '406 Citadel');
-
-INSERT INTO handypersons (id, first_name, last_name, email, phone_number, username, password, address, skill_id)
-VALUES (1,'Jack', 'mp', 'jack@gmail.com', '6047778594', 'Jacki', '123', '555 skylin', 1);
-
-INSERT INTO skills (id, skill_name, price )
-VALUES (1, 'painter', '85');
-
-INSERT INTO tasks (id, description, address, create_time, customer_id, skill_id)
-VALUES (1, 'hello painter', '888 citadel', NOW(), 1, 1);
-
-INSERT INTO orders (id,status, handyperson_id, task_id )
-VALUES (1, 'pending', 1, 1);

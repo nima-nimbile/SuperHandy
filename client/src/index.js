@@ -1,27 +1,32 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
 import Login from './components/Login';
 import CustomerPage from './components/CustomerPage'
 import CustomerHistory from './components/CustomerHistory';
 
 import Handyperson from './components/Handyperson';
 import HandypersonHistory from './components/Handyperson_history';
+import Register from './components/Register';
+import HandyDash from './components/HandyDash';
+import App from './App';
 import {
   createBrowserRouter,
   RouterProvider,
 } from "react-router-dom";
 
+
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <App/>,
+    element: <Login/>,
   },
   {
-    path: "/login",
-    element: <Login/>,
+    path: "/register",
+    element: <Register/>,
+  },
+  {
+    path: "/handyDash",
+    element: <HandyDash/>,
   },
   {
     path: "/customerPage",
@@ -38,6 +43,10 @@ const router = createBrowserRouter([
   {
     path: "/Handyperson_history",
     element: <HandypersonHistory/>,
+  },
+  {
+    path: "/#menu",
+    element: <App/>,
   }
 
 ]);
@@ -49,7 +58,3 @@ root.render(
   </React.StrictMode>
 );
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
