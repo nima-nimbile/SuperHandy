@@ -1,0 +1,106 @@
+.customer-page {
+  background: linear-gradient(to bottom right, #4f5bd5, #9b78f2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  width: 100%;
+}
+
+.nav-customer-page {
+  background-color:aquamarine;
+  display: inline-flex;
+  width: 100%;
+  justify-content: space-between;
+}
+
+.nav-customer-page h1 {
+  margin-left: 20px;
+}
+
+.nav-customer-page-div {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: center;
+  padding-right: 10px;
+}
+
+.nav-customer-page-div button {
+  margin-left: 15px;
+  font-size: 1.2rem;
+  border-radius: 5px;
+  padding: 5px;
+}
+
+.nav-customer-page-div a {
+  text-decoration: none;
+}
+
+.form-container {
+  background-color: white;
+  padding: 2rem;
+  border-radius: 10px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+  max-width: 600px;
+  width: 100%;
+}
+
+.form-container h3 {
+  font-size: 2rem;
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.form-container label {
+  font-size: 1.2rem;
+  margin-bottom: 0.5rem;
+  display: block;
+}
+
+ .form-container input {
+  font-size: 1.2rem;
+  padding: 0.5rem;
+  border-radius: 5px;
+  border: solid;
+  margin-bottom: 1rem;
+}
+
+
+.form-container button {
+  font-size: 1.2rem;
+  background-color: #4f5bd5;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  margin-top: 1rem;
+  margin:1rem ;
+}
+
+.form-container button:hover {
+  background-color: #9b78f2;
+}
+
+.form-container .login {
+  display: block;
+  text-align: center;
+  margin-top: 1rem;
+}
+
+.form-container select {
+  font-size: 1.2rem;
+  padding: 0.5rem;
+  border-radius: 5px;
+  border: solid;
+  margin-bottom: 1rem;
+  width: 100%;
+} 
+
+.button-customer-page {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+

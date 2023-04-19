@@ -1,0 +1,66 @@
+
+.customer-history {
+  background: linear-gradient(to bottom right, #4f5bd5, #9b78f2);
+  display: flex;
+  justify-content: center;
+  height: auto;
+  width: 100%;
+}
+
+.nav-customer-history {
+  background-color:aquamarine;
+  display: inline-flex;
+  width: 100%;
+  justify-content: space-between;
+}
+
+.nav-customer-history h1 {
+  margin-left: 20px;
+}
+
+.nav-customer-history-div {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: center;
+  padding-right: 10px;
+}
+
+.nav-customer-history-div button {
+  margin-left: 15px;
+  font-size: 1.2rem;
+  border-radius: 5px;
+  padding: 5px;
+}
+
+.nav-customer-history-div a {
+  text-decoration: none;
+}
+
+table, td, th {  
+  border: 1px solid #ddd;
+  text-align: center;
+}
+th {
+  background-color: rgb(193, 188, 188);
+  font-size: 1.2rem;
+}
+
+td {
+  color: white;
+  font-size: 1.2rem;
+}
+
+td button {
+  padding: 5px 10px 5px 10px;
+  border-radius: 5px;
+}
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+th, td {
+  padding: 15px;
+}
