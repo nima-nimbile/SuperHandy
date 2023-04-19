@@ -2,6 +2,8 @@ const express = require('express');
 const router = express.Router();
 const db = require('../db');
 
+
+
 router.post('/', (req, res) => {
   const { firstName, lastName, email, phoneNumber, username, password, address, userType, skill } = req.body;
   let skill_id;
@@ -38,8 +40,8 @@ router.post('/', (req, res) => {
       }
     })
     .then((result) => {
-      res.cookie('userId', result.rows[0].id);
-      res.cookie('userType', userType);
+      req.session.userId = result.rows[0].id;
+      req.session.userType = userType;
       if (userType === 'customer') {
         res.status(201).json({ success: true, message: 'Registration successful. Redirecting to customer dashboard...' });
       } else if (userType === 'handyperson') {

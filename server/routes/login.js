@@ -23,8 +23,8 @@ router.post('/', (req, res) => {
       if (result.rows[0].password !== password) {
         throw new Error('Invalid password');
       }
-      res.cookie('userId', result.rows[0].id);
-      res.cookie('userType', userType);
+      req.session.userId = result.rows[0].id;
+      req.session.userType = userType;
       if (userType === 'customer') {
         res.status(200).json({ success: true, message: 'Login successful. Redirecting to customer dashboard...' });
       } else if (userType === 'handyperson') {

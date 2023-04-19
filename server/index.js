@@ -3,6 +3,15 @@ const express = require("express");
 const app = express();
 const cors = require("cors");
 const db = require('./db');
+const cookieSession = require('cookie-session');
+
+app.use(cookieSession({
+  name: 'session',
+  keys: ['bootcamp'],
+
+  // Cookie Options
+  maxAge: 24 * 60 * 60 * 1000 // 24 hours
+}))
 
 
 //middleware

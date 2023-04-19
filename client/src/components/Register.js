@@ -17,6 +17,21 @@ const Register = () => {
   const [errorMessage, setErrorMessage] = useState('');
 
   const handleRegister = () => {
+    if (
+      firstName === '' ||
+      lastName === '' ||
+      email === '' ||
+      phoneNumber === '' ||
+      username === '' ||
+      password === '' ||
+      address === '' ||
+      userType === '' ||
+      (userType === 'handyperson' && skill === '')
+    ) {
+      setErrorMessage('Please fill all fields');
+      return;
+    }
+    
     axios.post('http://localhost:5000/register', {
       firstName,
       lastName,
