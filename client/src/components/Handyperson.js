@@ -8,7 +8,7 @@ const Handyperson = () => {
 
   const getDataBase = async (e) => {
     try {
-      const response = await fetch(`http://localhost:5000/hp/${1}`);
+      const response = await fetch(`http://localhost:5000/order/${1}`);
       const jsonData = await response.json();
       setTodos(jsonData);
       

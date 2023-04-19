@@ -15,7 +15,7 @@ const Navbar = () => {
 
       <div className='logo'>
         <img src={logo} alt="logo" width="250" height="200"/>
-        <button className="explore" onClick={toggleMenu}><a href="#menu">Explore More</a></button>
+        <button className="explore" onClick={toggleMenu}><a href="/#menu">Explore More</a></button>
       </div>
       
       {isOpen && (
@@ -24,9 +24,6 @@ const Navbar = () => {
             <Link to="#menu" className="close" onClick={toggleMenu}></Link>
             <div className="nav">
               <ul className="nav_list">
-                <div className="nav_list_item">
-                  <li><Link to="/HOME">HOME</Link></li>
-                </div>
                 <div className="nav_list_item">
                   <li><Link to="/About">About</Link></li>
                 </div>
@@ -38,9 +35,6 @@ const Navbar = () => {
                 </div>
                 <div className="nav_list_item">
                   <li><Link to="/register">Register</Link></li>
-                </div>
-                <div className="nav_list_item">
-                  <li><Link to="/Handyperson">Handyperson</Link></li>
                 </div>
               </ul>
             </div>

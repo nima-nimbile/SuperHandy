@@ -93,7 +93,7 @@ const Register = () => {
         )}
         <button onClick={handleRegister}>Register</button>
         <div>
-          <a href="/" className="login">Already have account? go to login</a>
+          <a href="/login" className="login">Already have account? go to login</a>
         </div>
         {errorMessage && <div className="error-message">{errorMessage}</div>}
       </div>
