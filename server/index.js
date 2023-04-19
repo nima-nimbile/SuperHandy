@@ -21,58 +21,14 @@ app.use(express.json());
 const loginRoute = require("./routes/login");
 const registerRoute = require("./routes/register");
 const handyDashRoute = require("./routes/handyDash");
+const ordersRoute = require("./routes/orders");
+const editStatusRoute = require("./routes/editStatus");
 
 app.use('/login', loginRoute);
 app.use('/register', registerRoute);
 app.use('/handyDash', handyDashRoute);
-
-app.get("/hp/:id", async (req, res) => {
-  try {
-    const { id } = req.params;
-    const someInfo = await db.query(`
-      SELECT 
-        customers.first_name, 
-        customers.last_name, 
-        skills.skill_name, 
-        tasks.create_time, 
-        skills.price, 
-        tasks.description, 
-        tasks.address, 
-        customers.email, 
-        orders.status,
-        orders.id
-      FROM 
-        customers 
-      JOIN 
-        tasks ON customers.id = tasks.customer_id 
-      JOIN 
-        skills ON tasks.skill_id = skills.id 
-      JOIN 
-        orders ON tasks.id = orders.task_id 
-      WHERE
-        customers.id = $1
-    `, [id]); // Pass the id parameter as a query parameter
-    res.json(someInfo.rows);
-  } catch (error) {
-    // Handle error
-    console.error(error);
-  }
-});
-
-//edit request
-
-app.put("/edit/:id", async (req,res) => {
-  try {
-    const { id } = req.params;
-    const {status} = req.body;
-    const updatStatus = await db.query(`UPDATE orders SET status = $1 WHERE orders_id = $2`, 
-    [status, id]
-    );
-res.json(updatStatus)
-  } catch (error) {
-    console.error(error);
-  }
-})
+app.use('/orders', ordersRoute);
+app.use('/editStatus', editStatusRoute);
 
 
 app.listen(5000,()=>{
