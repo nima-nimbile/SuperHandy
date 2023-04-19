@@ -7,6 +7,8 @@ import Login from './components/Login';
 import CustomerPage from './components/CustomerPage'
 import CustomerHistory from './components/CustomerHistory';
 
+import Handyperson from './components/Handyperson';
+import HandypersonHistory from './components/Handyperson_history';
 import {
   createBrowserRouter,
   RouterProvider,
@@ -27,7 +29,15 @@ const router = createBrowserRouter([
   },
   {
     path: "/customerHistory",
-    element: <CustomerHistory/>
+    element: <CustomerHistory/>,
+  },
+  {
+    path: "/Handyperson",
+    element: <Handyperson/>,
+  },
+  {
+    path: "/Handyperson_history",
+    element: <HandypersonHistory/>,
   }
 
 ]);
