@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import Login from './components/Login';
 import Register from './components/Register';
+import HandyDash from './components/HandyDash';
 import {
   createBrowserRouter,
   RouterProvider,
@@ -16,6 +17,10 @@ const router = createBrowserRouter([
   {
     path: "/register",
     element: <Register/>,
+  },
+  {
+    path: "/handyDash",
+    element: <HandyDash/>,
   },
 
 ]);

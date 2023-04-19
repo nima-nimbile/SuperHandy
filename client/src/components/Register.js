@@ -47,7 +47,7 @@ const Register = () => {
       if (userType === 'customer') {
         return navigate('/customer');
       } else if (userType === 'handyperson') {
-        return navigate('/handyperson');
+        return navigate('/handyDash');
       }
     })
     .catch((error) => {

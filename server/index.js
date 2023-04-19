@@ -20,10 +20,11 @@ app.use(express.json());
 
 const loginRoute = require("./routes/login");
 const registerRoute = require("./routes/register");
-
+const handyDashRoute = require("./routes/handyDash");
 
 app.use('/login', loginRoute);
 app.use('/register', registerRoute);
+app.use('/handyDash', handyDashRoute);
 
 
 app.listen(5000,()=>{
