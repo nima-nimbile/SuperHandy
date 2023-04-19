@@ -4,7 +4,16 @@ const db = require('../db');
 
 router.post('/', (req, res) => {
   const { firstName, lastName, email, phoneNumber, username, password, address, userType, skill } = req.body;
-
+  let skill_id;
+  if (skill === 'general') {
+    skill_id = 1;
+  } else if (skill === 'electric') {
+    skill_id = 2;
+  } else if (skill === 'install') {
+    skill_id = 3;
+  } else if (skill === 'plumb') {
+    skill_id = 4;
+  }
   let tableName = '';
   if (userType === 'customer') {
     tableName = 'customers';
@@ -24,8 +33,8 @@ router.post('/', (req, res) => {
         return db.query(`INSERT INTO ${tableName} (first_name, last_name, email, phone_number, username, password, address) 
         VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING *`, [firstName, lastName, email, phoneNumber, username, password, address])
       } else {
-        return db.query(`INSERT INTO ${tableName} (first_name, last_name, email, phone_number, username, password, address, skill) 
-        VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING *`, [firstName, lastName, email, phoneNumber, username, password, address, skill])
+        return db.query(`INSERT INTO ${tableName} (first_name, last_name, email, phone_number, username, password, address, skill_id) 
+        VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING *`, [firstName, lastName, email, phoneNumber, username, password, address, skill_id])
       }
     })
     .then((result) => {
