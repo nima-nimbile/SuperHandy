@@ -8,7 +8,7 @@ const HandypersonHistory = () => {
 
   const getDataBase = async (e) => {
     try {
-      const response = await fetch(`http://localhost:5000/hp/${1}`);
+      const response = await fetch(`http://localhost:5000/orders`);
       const jsonData = await response.json();
       setTodos(jsonData);
       
@@ -53,7 +53,7 @@ const HandypersonHistory = () => {
               <td>{item.description}</td>
               <td>{item.address}</td>
               <td>{item.email}</td>
-              <td className={item.status === "Done" ? "done" : ""}>
+              <td className={item.status === "Done" ? "done" : (item.status === "In progress" ? "in-progress" : "")}>
                 {item.status}
               </td>
             </tr>))}
