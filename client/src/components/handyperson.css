@@ -38,6 +38,11 @@
   color: white;
 }
 
+.superhandy-table .in-progress {
+  background-color: yellow;
+  color: black;
+}
+
 .history {
   margin-right: 10px;
 }
@@ -58,3 +63,4 @@
   border: none;
   cursor: pointer;
 }
+

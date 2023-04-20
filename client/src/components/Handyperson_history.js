@@ -8,7 +8,7 @@ const HandypersonHistory = () => {
 
   const getDataBase = async (e) => {
     try {
-      const response = await fetch(`http://localhost:5000/hp/${1}`);
+      const response = await fetch(`http://localhost:5000/orders`);
       const jsonData = await response.json();
       setTodos(jsonData);
       
@@ -23,11 +23,24 @@ const HandypersonHistory = () => {
 
   return (
     <div>
-      <h1>Handyperson History</h1>
-      <button className="history"><Link to="/handyperson">Back</Link></button>
-      <button className="Logout" onClick={() => window.location = "/#menu"}>
-        Logout
-      </button>
+         <nav className="navbar navbar-expand-lg navbar-dark bg-dark p-3">
+        <div className="container-fluid">
+          <h1 className="navbar-brand">Handyperson</h1>
+          <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div className=" collapse navbar-collapse" id="navbarNavDropdown">
+            <ul className="navbar-nav ms-auto ">
+              <li className="nav-item">
+                <Link className="nav-link mx-2 active" aria-current="page" to="/handyperson">Back</Link>
+              </li>
+              <li className="nav-item">
+                <Link className="nav-link mx-2" to="/#menu">Logout</Link>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
       <table className="superhandy-table">
         <thead>
           <tr>
@@ -53,7 +66,7 @@ const HandypersonHistory = () => {
               <td>{item.description}</td>
               <td>{item.address}</td>
               <td>{item.email}</td>
-              <td className={item.status === "Done" ? "done" : ""}>
+              <td className={item.status === "Done" ? "done" : (item.status === "In progress" ? "in-progress" : "")}>
                 {item.status}
               </td>
             </tr>))}
