@@ -17,7 +17,7 @@ function Login() {
       if (userType === 'customer') {
         return navigate('/customer');
       } else if (userType === 'handyperson') {
-        return navigate('/handyDash');
+        return navigate(`/handyDash/${response.data.userId}`);
       }
     })
       .catch((error) => {

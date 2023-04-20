@@ -8,16 +8,17 @@ import Handyperson from './components/Handyperson';
 import HandypersonHistory from './components/Handyperson_history';
 import Register from './components/Register';
 import HandyDash from './components/HandyDash';
-import App from './App';
+import Navbar from './components/Navbar';
 import {
   createBrowserRouter,
   RouterProvider,
 } from "react-router-dom";
 
 
+
 const router = createBrowserRouter([
   {
-    path: "/",
+    path: "/login",
     element: <Login/>,
   },
   {
@@ -25,7 +26,7 @@ const router = createBrowserRouter([
     element: <Register/>,
   },
   {
-    path: "/handyDash",
+    path: "/handyDash/:id",
     element: <HandyDash/>,
   },
   {
@@ -45,8 +46,8 @@ const router = createBrowserRouter([
     element: <HandypersonHistory/>,
   },
   {
-    path: "/#menu",
-    element: <App/>,
+    path: "/",
+    element: <Navbar/>,
   }
 
 ]);

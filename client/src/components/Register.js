@@ -47,7 +47,7 @@ const Register = () => {
       if (userType === 'customer') {
         return navigate('/customer');
       } else if (userType === 'handyperson') {
-        return navigate('/handyDash');
+        return navigate(`/handyDash/${response.data.userId}`);
       }
     })
     .catch((error) => {
@@ -93,7 +93,7 @@ const Register = () => {
         )}
         <button onClick={handleRegister}>Register</button>
         <div>
-          <a href="/" className="login">Already have account? go to login</a>
+          <a href="/login" className="login">Already have account? go to login</a>
         </div>
         {errorMessage && <div className="error-message">{errorMessage}</div>}
       </div>

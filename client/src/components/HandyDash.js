@@ -1,19 +1,24 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import './handyDash.scss';
+import { useParams } from 'react-router-dom';
 
-const HandyDash = () => {
+const HandyDash = (props) => {
   const [handyPerson, setHandyPerson] = useState(null);
+  const {id} = useParams();
+  const userId = props.userId;
 
+
+  console.log("id",id);
   useEffect(() => {
-    axios.get('http://localhost:5000/handyDash/1')
+    axios.get(`http://localhost:5000/handyDash/${id}`)
       .then((response) => {
         setHandyPerson(response.data.handyperson);
       })
       .catch((error) => {
         console.error(error);
       });
-  }, []);
+  }, [userId]);
 
   return (
     <div className="handy-dash">

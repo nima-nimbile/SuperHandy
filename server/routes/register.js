@@ -45,7 +45,8 @@ router.post('/', (req, res) => {
       if (userType === 'customer') {
         res.status(201).json({ success: true, message: 'Registration successful. Redirecting to customer dashboard...' });
       } else if (userType === 'handyperson') {
-        res.status(201).json({ success: true, message: 'Registration successful. Redirecting to handy person dashboard...' });
+        res.status(201).json({ success: true, message: 'Registration successful. Redirecting to handy person dashboard...'
+        ,userId: req.session.userId });
       }
     })
     .catch((err) => {

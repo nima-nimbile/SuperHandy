@@ -28,7 +28,8 @@ router.post('/', (req, res) => {
       if (userType === 'customer') {
         res.status(200).json({ success: true, message: 'Login successful. Redirecting to customer dashboard...' });
       } else if (userType === 'handyperson') {
-        res.status(200).json({ success: true, message: 'Login successful. Redirecting to handy person dashboard...' });
+        res.status(200).json({ success: true, message: 'Login successful. Redirecting to handy person dashboard...', 
+        userId: req.session.userId });
       }
     })
     .catch((err) => {
