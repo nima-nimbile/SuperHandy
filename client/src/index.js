@@ -26,7 +26,7 @@ const router = createBrowserRouter([
     element: <Register/>,
   },
   {
-    path: "/handyDash",
+    path: "/handyDash/:id",
     element: <HandyDash/>,
   },
   {

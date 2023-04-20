@@ -17,7 +17,7 @@ const Navbar = () => {
         <img src={logo} alt="logo" width="250" height="200"/>
         <button className="explore" onClick={toggleMenu}><a href="/#menu">Explore More</a></button>
       </div>
-      
+
       {isOpen && (
         <div className="popover" id="menu">
           <div className="content">

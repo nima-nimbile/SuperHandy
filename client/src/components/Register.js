@@ -45,9 +45,9 @@ const Register = () => {
     })
     .then((response) => {
       if (userType === 'customer') {
-        return navigate('/customer');
+        return navigate('/CustomerPage');
       } else if (userType === 'handyperson') {
-        return navigate('/handyDash');
+        return navigate(`/handyDash/${response.data.userId}`);
       }
     })
     .catch((error) => {
