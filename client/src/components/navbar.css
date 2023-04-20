@@ -4,7 +4,7 @@
   padding: 0;
 }
 
-.container {
+.mainOne {
   min-height: 100vh;
   display: flex;
   justify-content: center;
@@ -22,7 +22,7 @@
 }
 
 a {
-  font-size: 16px;
+  font-size: 30px;
   color: #f57f25;
   text-decoration: none;
   text-transform: uppercase;
@@ -44,12 +44,12 @@ a {
   background-color: #000000;
 }
 
-.popover {
+.pop {
   display: none;
   box-shadow: 0px 6px 8px rgba(19, 19, 19, 0.7);
 }
 
-.popover:target {
+.pop:target {
   position: absolute;
   right: 0;
   top: 0;
@@ -60,7 +60,7 @@ a {
   justify-content: center;
 }
 
-.popover .content {
+.pop .content {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -74,22 +74,22 @@ a {
   text-align: center;
 }
 
-.nav_list {
+.navOne_list {
   list-style-type: none;
 }
 
-.nav_list a {
+.navOne_list a {
   text-decoration: none;
-  font-size: 20px;
+  font-size: 40px;
   color: #fff;
 }
 
-.nav_list_item {
+.navOne_list_item {
   height: 100%;
   overflow: hidden;
 }
 
-.nav_list li {
+.navOne_list li {
   padding: 15px 0;
   text-transform: uppercase;
   transform: translateY(200px);
@@ -98,7 +98,7 @@ a {
   position: relative;
 }
 
-.nav_list li::before {
+.navOne_list li::before {
   content: "";
   position: absolute;
   height: 2px;
@@ -109,17 +109,17 @@ a {
   transition: all 0.5s ease;
 }
 
-.nav_list li:hover:before {
+.navOne_list li:hover:before {
   width: 100%;
 }
 
-.popover p {
+.pop p {
   padding: 50px;
   opacity: 0;
   animation: 1s fadeIn ease forwards 1s;
 }
 
-.popover .close::after {
+.pop .close::after {
   right: 0;
   top: 0;
   width: 50px;

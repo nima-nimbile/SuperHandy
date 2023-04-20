@@ -4,7 +4,6 @@ import "./handyperson.css";
 
 const Handyperson = () => {
   const [todos, setTodos] = useState([]);
-  const [newStatus, setNewStatus] = useState("");
 
   const getDataBase = async () => {
     try {
@@ -44,13 +43,24 @@ const Handyperson = () => {
 
   return (
     <div>
-      <h1>Handyperson</h1>
-      <button className="history">
-        <Link to="/handyperson_history">History</Link>
-      </button>
-      <button className="Logout" onClick={() => (window.location = "/#menu")}>
-        Logout
-      </button>
+      <nav className="navbar navbar-expand-lg navbar-dark bg-dark p-3">
+        <div className="container-fluid">
+          <h1 className="navbar-brand">Handyperson</h1>
+          <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div className=" collapse navbar-collapse" id="navbarNavDropdown">
+            <ul className="navbar-nav ms-auto ">
+              <li className="nav-item">
+                <Link className="nav-link mx-2 active" aria-current="page" to="/handyperson_history">History</Link>
+              </li>
+              <li className="nav-item">
+                <Link className="nav-link mx-2" to="/#menu">Logout</Link>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
       <table className="superhandy-table">
         <thead>
           <tr>
