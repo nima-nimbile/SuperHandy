@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom"
+import HandyPerName from "./HandyPerName";
 import "./handyperson_history.css";
 
 const HandypersonHistory = () => {
@@ -25,9 +26,9 @@ const HandypersonHistory = () => {
     <div>
          <nav className="navbar navbar-expand-lg navbar-dark bg-dark p-3">
         <div className="container-fluid">
-          <h1 className="navbar-brand">Handyperson</h1>
+        <HandyPerName todos={todos}/>
           <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
+            <span className="navbar-toggler-icon"></span>
           </button>
           <div className=" collapse navbar-collapse" id="navbarNavDropdown">
             <ul className="navbar-nav ms-auto ">
