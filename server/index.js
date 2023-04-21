@@ -27,6 +27,8 @@ const handyDashRoute = require("./routes/handyDash");
 const ordersRoute = require("./routes/orders");
 const editStatusRoute = require("./routes/editStatus");
 const logoutRoute = require("./routes/logout");
+const customerPageRoute = require("./routes/customerPage");
+const customerHistoryRoute = require("./routes/customerHistory");
 
 app.use('/login', loginRoute);
 app.use('/register', registerRoute);
@@ -34,6 +36,8 @@ app.use('/handyDash', handyDashRoute);
 app.use('/orders', ordersRoute);
 app.use('/editStatus', editStatusRoute);
 app.use('/logout', logoutRoute);
+app.use('/customerPage', customerPageRoute);
+app.use('/customerHistory', customerHistoryRoute);
 
 
 app.listen(5000,()=>{

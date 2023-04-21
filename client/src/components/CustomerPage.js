@@ -24,7 +24,6 @@ function CustomerPage() {
       date === '' ||
       description === '' ||
       address === '') {
-        console.log("handel submit date: ",selectedTaskOption,selectedStimatedTimeOption,selectedTimeOption,date,description,address);
       setErrorMessage('Please fill up all fields');
       return;
     }
@@ -69,7 +68,7 @@ function CustomerPage() {
 
 
       <div className="customer-page">
-        <form onSubmit={handleSubmit} className="form-container">
+        <form className="form-container">
           <lable>Task:
             <select value={selectedTaskOption} onChange={(event) => setSelectedTaskOption(event.target.value)} >
               <option value="">Choose your task</option>
@@ -114,8 +113,8 @@ function CustomerPage() {
 
           <div className="button-customer-page">
 
-            <button type="submit" onClick={handleSubmit}>Save</button>
-            <button type="cancle" onClick={handleCancel}>Cancle</button>
+            <button type="submit" onClick={handleSubmit}><a href="/CustomerHistory">Save</a></button>
+            <button type="cancle" onClick={handleCancel}><a href="/CustomerPage">Reset</a></button>
             {errorMessage && <div className="error-message">{errorMessage}</div>}
 
           </div >

@@ -11,7 +11,7 @@ function CustomerHistory() {
 
   useEffect(() => {
     async function fetchData() {
-      const response = await fetch('/api/get-data');
+      const response = await fetch('http://localhost:5000/customerHistory');
       const result = await response.json();
       setTableData(result);
     }
@@ -46,8 +46,8 @@ function CustomerHistory() {
               <th>Edit</th>
             </tr>
           </thead>
-          {/* <tbody>
-            {tableData.map((row)=>(
+           <tbody>
+             {/* {tableData.map((row)=>(
               <tr key={row.id}>
                 <td>{row.handyman}</td>
                 <td>{row.task}</td>
@@ -57,37 +57,11 @@ function CustomerHistory() {
                 <td>{row.description}</td>
                 <td>{row.status}</td>
                 <td>{row.handyman_contact}</td>
-                <td>{row.delete}</td>
-                <td>{row.edit}</td>
-              </tr>
-            ))}
-          </tbody> */}
-           <tbody>
-              <tr>
-                <td>Albert Es</td>
-                <td>General</td>
-                <td>24/03/2023</td>
-                <td>3 pm</td>
-                <td>$70</td>
-                <td>I need your help</td>
-                <td>pending for doing</td>
-                <td>778-951-5698</td>
                 <td><button>Delete</button></td>
                 <td><button>Edit</button></td>
               </tr>
-              <tr>
-                <td>Martin Lee</td>
-                <td>Plumbing</td>
-                <td>12/02/2023</td>
-                <td>9 am</td>
-                <td>$85</td>
-                <td>I need your help</td>
-                <td>pending for accept</td>
-                <td>778-951-1234</td>
-                <td><button>Delete</button></td>
-                <td><button>Edit</button></td>
-              </tr>
-          </tbody>
+            ))}  */}
+          </tbody> 
         </table>
       </div>
 
