@@ -12,14 +12,14 @@ function Login() {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    axios.post('http://localhost:5000/login', { email, password, userType })
-    .then((response) => {
-      if (userType === 'customer') {
-        return navigate('/CustomerPage');
-      } else if (userType === 'handyperson') {
-        return navigate(`/handyDash/${response.data.userId}`);
-      }
-    })
+    axios.post('http://localhost:5000/login', { email, password, userType }, {withCredentials:true})
+      .then((response) => {
+        if (userType === 'customer') {
+          navigate('/customerPage');
+        } else if (userType === 'handyperson') {
+          navigate(`/handyDash`);
+        }
+      })
       .catch((error) => {
         console.error(error);
         setErrorMessage('Invalid email, password, or user type.');

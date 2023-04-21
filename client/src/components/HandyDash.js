@@ -1,34 +1,57 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import './handyDash.scss';
-import { useParams } from 'react-router-dom';
 import { Link } from "react-router-dom"
+import './handyDash.scss';
 import "./handyperson.css";
 
 const HandyDash = (props) => {
   const [handyPerson, setHandyPerson] = useState(null);
-  const {id} = useParams();
-  const userId = props.userId;
 
-
-  console.log("id",id);
   useEffect(() => {
-    axios.get(`http://localhost:5000/handyDash/${id}`)
+    axios.get(`http://localhost:5000/handyDash`, {
+      withCredentials: true
+    })
       .then((response) => {
         setHandyPerson(response.data.handyperson);
       })
       .catch((error) => {
-        console.error(error);
+        if (error.response.status === 401) {
+          window.location = '/login';
+        }
       });
-  }, [userId]);
+  }, []);
+
+  const handleLogout = () => {
+    console.log('Logging out...');
+    axios.post('http://localhost:5000/logout', {}, { withCredentials: true })
+      .then((response) => {
+        window.location = '/login';
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
 
   return (
     <div>
-      <h1>Handyperson</h1>
-      <button className="history"><Link to="/handyperson_history">History</Link></button>
-      <button className="Logout" onClick={() => window.location = "/#menu"}>
-        Logout
-      </button>
+      <nav className="navbar navbar-expand-lg navbar-dark bg-dark p-3">
+        <div className="container-fluid">
+          <h1 className="navbar-brand">Handyperson</h1>
+          <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div className=" collapse navbar-collapse" id="navbarNavDropdown">
+            <ul className="navbar-nav ms-auto ">
+              <li className="nav-item">
+                <Link className="nav-link mx-2 active" aria-current="page" to="/handyperson_history">History</Link>
+              </li>
+              <button onClick={handleLogout}>
+                  Logout
+                </button>
+            </ul>
+          </div>
+        </div>
+      </nav>
       <div className="handy-dash">
         {handyPerson && (
           <>

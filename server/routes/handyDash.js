@@ -2,8 +2,14 @@ const express = require('express');
 const router = express.Router();
 const db = require('../db');
 
-router.get('/:id', (req, res) => {
-  const { id } = req.params;
+router.get('/', (req, res) => {
+  if (!req.session.userId){
+    res.sendStatus(401);
+    return;
+  }
+  console.log("req.header", req.headers);
+  console.log("req.session", req.session);
+  const id = req.session.userId;
   db.query(`SELECT handypersons.id, 
     handypersons.first_name, 
     handypersons.last_name, 
