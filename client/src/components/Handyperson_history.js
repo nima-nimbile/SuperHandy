@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom"
 import HandyPerName from "./HandyPerName";
 import "./handyperson_history.css";
+import axios from "axios";
 
 const HandypersonHistory = () => {
   const [todos, setTodos] = useState([]);
@@ -22,6 +23,17 @@ const HandypersonHistory = () => {
     getDataBase();
   }, [])
 
+  const handleLogout = () => {
+    console.log('Logging out...');
+    axios.post('http://localhost:5000/logout', {}, { withCredentials: true })
+      .then((response) => {
+        window.location = '/login';
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
   return (
     <div>
          <nav className="navbar navbar-expand-lg navbar-dark bg-dark p-3">
@@ -32,12 +44,15 @@ const HandypersonHistory = () => {
           </button>
           <div className=" collapse navbar-collapse" id="navbarNavDropdown">
             <ul className="navbar-nav ms-auto ">
-              <li className="nav-item">
-                <Link className="nav-link mx-2 active" aria-current="page" to="/handyperson">Your Page</Link>
+            <li className="nav-item">
+              <Link className="nav-link mx-2 active" aria-current="page" to="/handyDash">Profile Dashboard</Link>
               </li>
               <li className="nav-item">
-                <Link className="nav-link mx-2" to="/#menu">Logout</Link>
+                <Link className="nav-link mx-2 active" aria-current="page" to="/handyperson">Job List</Link>
               </li>
+              <button onClick={handleLogout}>
+                  Logout
+                </button>
             </ul>
           </div>
         </div>

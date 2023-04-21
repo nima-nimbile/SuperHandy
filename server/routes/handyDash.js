@@ -3,12 +3,10 @@ const router = express.Router();
 const db = require('../db');
 
 router.get('/', (req, res) => {
-  if (!req.session.userId){
+  if (req.session.userType !== "handyperson"){
     res.sendStatus(401);
     return;
   }
-  console.log("req.header", req.headers);
-  console.log("req.session", req.session);
   const id = req.session.userId;
   db.query(`SELECT handypersons.id, 
     handypersons.first_name, 

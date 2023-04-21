@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-
+import axios from "axios";
 import './customerHistory.css';
 import { NavLink } from 'react-router-dom';
 import 'react-datepicker/dist/react-datepicker.css';
@@ -19,14 +19,24 @@ function CustomerHistory() {
   }, []);
 
 
+  const handleLogout = () => {
+    console.log('Logging out...');
+    axios.post('http://localhost:5000/logout', {}, { withCredentials: true })
+      .then((response) => {
+        window.location = '/login';
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
   return (
     <>
       <nav className="nav-customer-history">
       <h1>Customer History</h1>
       <div className="nav-customer-history-div">
-          <button><NavLink exact to="/">Home</NavLink></button>
           <button><NavLink to="/CustomerPage">Add new task</NavLink></button>
-          <button><NavLink to="/">Logout</NavLink></button>
+          <button onClick={handleLogout}>Logout</button>
         </div>
       </nav>
 

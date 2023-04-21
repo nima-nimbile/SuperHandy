@@ -3,7 +3,6 @@ const router = express.Router();
 const db = require('../db');
 
 
-
 router.post('/', (req, res) => {
   const { selectedTaskOption, selectedStimatedTimeOption, selectedTimeOption, date, description, address } = req.body;
   let skill_id;

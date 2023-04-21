@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import HandyPerName from "./HandyPerName";
 import "./handyperson.css";
+import axios from 'axios';
 
 const Handyperson = () => {
   const [todos, setTodos] = useState([]);
@@ -43,6 +44,17 @@ const Handyperson = () => {
     getDataBase();
   }, []);
 
+  const handleLogout = () => {
+    console.log('Logging out...');
+    axios.post('http://localhost:5000/logout', {}, { withCredentials: true })
+      .then((response) => {
+        window.location = '/login';
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
 
   return (
     <div>
@@ -62,13 +74,14 @@ const Handyperson = () => {
             id="navbarNavDropdown">
             <ul className="navbar-nav ms-auto ">
               <li className="nav-item">
-                <Link className="nav-link mx-2 active"
-                  aria-current="page"
-                  to="/handyperson_history">History</Link>
+              <Link className="nav-link mx-2 active" aria-current="page" to="/handyDash">Profile Dashboard</Link>
               </li>
               <li className="nav-item">
-                <Link className="nav-link mx-2" to="/#menu">Logout</Link>
+                <Link className="nav-link mx-2 active" aria-current="page" to="/handyperson_history">Job History</Link>
               </li>
+              <button onClick={handleLogout}>
+                  Logout
+                </button>
             </ul>
           </div>
         </div>

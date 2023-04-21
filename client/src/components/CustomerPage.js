@@ -54,15 +54,24 @@ function CustomerPage() {
   };
 
 
+  const handleLogout = () => {
+    console.log('Logging out...');
+    axios.post('http://localhost:5000/logout', {}, { withCredentials: true })
+      .then((response) => {
+        window.location = '/login';
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
 
   return (
     <>
       <nav className="nav-customer-page">
         <h1>Customer Page</h1>
         <div className="nav-customer-page-div">
-          <button><NavLink exact to="/">Home</NavLink></button>
           <button><NavLink to="/CustomerHistory">History</NavLink></button>
-          <button><NavLink to="/">Logout</NavLink></button>
+          <button onClick={handleLogout}>Logout</button>
         </div>
       </nav>
 
