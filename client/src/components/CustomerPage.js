@@ -1,11 +1,27 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import axios from 'axios';
 import './customerPage.css';
 import { NavLink, useNavigate } from 'react-router-dom';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 
-function CustomerPage() {
+const CustomerPage = (props) => {
+  const [customerPage, setCustomerPage] = useState(null);
+
+  useEffect(() => {
+    axios.get(`http://localhost:5000/customerPage`, {
+      withCredentials: true
+    })
+      .then((response) => {
+        setCustomerPage(response.data.customerPage);
+      })
+      .catch((error) => {
+        if (error.response.status === 401) {
+          window.location = '/login';
+        }
+      });
+  }, []);
+
   const [selectedTaskOption, setSelectedTaskOption] = useState('');
   const [selectedStimatedTimeOption, setSelectedStimatedTimeOption] = useState('');
   const [selectedTimeOption, setSelectedTimeOption] = useState('');
@@ -70,8 +86,11 @@ function CustomerPage() {
       <nav className="nav-customer-page">
         <h1>Customer Page</h1>
         <div className="nav-customer-page-div">
+          <button><NavLink exact to="/">Home</NavLink></button>
           <button><NavLink to="/CustomerHistory">History</NavLink></button>
-          <button onClick={handleLogout}>Logout</button>
+          <button onClick={handleLogout}>
+Logout
+                </button>
         </div>
       </nav>
 

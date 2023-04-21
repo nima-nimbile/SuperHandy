@@ -4,8 +4,23 @@ import './customerHistory.css';
 import { NavLink } from 'react-router-dom';
 import 'react-datepicker/dist/react-datepicker.css';
 
+const CustomerHistory = (props) => {
+  const [customerPage, setCustomerPage] = useState(null);
 
-function CustomerHistory() {
+  useEffect(() => {
+    axios.get(`http://localhost:5000/customerHistory`, {
+      withCredentials: true
+    })
+      .then((response) => {
+        setCustomerPage(response.data.customerPage);
+      })
+      .catch((error) => {
+        if (error.response.status === 401) {
+          window.location = '/login';
+        }
+      });
+  }, []);
+
   const [tableData, setTableData] = useState([]);
   
 
