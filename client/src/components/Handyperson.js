@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import HandyPerName from "./HandyPerName";
 import "./handyperson.css";
 
 const Handyperson = () => {
@@ -37,23 +38,33 @@ const Handyperson = () => {
       console.error("Failed to update status:", error);
     }
   };
-
+ 
   useEffect(() => {
     getDataBase();
   }, []);
+
 
   return (
     <div>
       <nav className="navbar navbar-expand-lg navbar-dark bg-dark p-3">
         <div className="container-fluid">
-          <h1 className="navbar-brand">Handyperson</h1>
-          <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
+          <HandyPerName todos={todos} />
+          <button className="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarNavDropdown"
+            aria-controls="navbarNavDropdown"
+            aria-expanded="false"
+            aria-label="Toggle navigation">
+            <span className="navbar-toggler-icon"></span>
           </button>
-          <div className=" collapse navbar-collapse" id="navbarNavDropdown">
+          <div className=" collapse navbar-collapse"
+            id="navbarNavDropdown">
             <ul className="navbar-nav ms-auto ">
               <li className="nav-item">
-                <Link className="nav-link mx-2 active" aria-current="page" to="/handyperson_history">History</Link>
+                <Link className="nav-link mx-2 active"
+                  aria-current="page"
+                  to="/handyperson_history">History</Link>
               </li>
               <li className="nav-item">
                 <Link className="nav-link mx-2" to="/#menu">Logout</Link>
@@ -83,7 +94,7 @@ const Handyperson = () => {
               <td> {item.first_name}</td>
               <td>{item.last_name}</td>
               <td>{item.skill_name}</td>
-              <td>{item.create_time}</td>
+              <td>{item.duration}</td>
               <td>${item.price}</td>
               <td>{item.description}</td>
               <td>{item.address}</td>
