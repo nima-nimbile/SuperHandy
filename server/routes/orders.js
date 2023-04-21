@@ -10,7 +10,7 @@ router.get("/", async (req, res) => { // Modify the route to "/"" instead of "/:
         customers.first_name, 
         customers.last_name, 
         skills.skill_name, 
-        tasks.create_time, 
+        tasks.duration, 
         skills.price, 
         tasks.description, 
         tasks.address, 

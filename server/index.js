@@ -23,12 +23,14 @@ const registerRoute = require("./routes/register");
 const handyDashRoute = require("./routes/handyDash");
 const ordersRoute = require("./routes/orders");
 const editStatusRoute = require("./routes/editStatus");
+const handyPerNameRoute = require("./routes/handyPerName");
 
 app.use('/login', loginRoute);
 app.use('/register', registerRoute);
 app.use('/handyDash', handyDashRoute);
 app.use('/orders', ordersRoute);
 app.use('/editStatus', editStatusRoute);
+app.use('/handyPerName', handyPerNameRoute);
 
 
 app.listen(5000,()=>{

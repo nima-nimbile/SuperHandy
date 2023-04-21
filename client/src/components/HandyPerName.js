@@ -1,14 +1,12 @@
 import React, { useState, useEffect } from "react";
-
 const HandyPerName = ({ todos }) => {
   const [name, setName] = useState("");
-  
   useEffect(() => {
     const fetchData = async () => {
       try {
         if (todos.length > 0) {
           // Extract the ID from the first todo in the todos array
-          const id = todos[0].id; 
+          const id = todos.map(item => item.id); 
           const response = await fetch(
             `http://localhost:5000/handyPerName/${id}`
           );
@@ -24,7 +22,7 @@ const HandyPerName = ({ todos }) => {
   console.log(name, "nameeeeeee")
   return (
     <h1 className="navbar-brand">
-      {name ? `Handyperson: ${name[0].first_name} ${name[0].last_name}` : ""}
+      {name ? `WELCOME! ${name[0].first_name}` : ""}
     </h1>
   );
 };

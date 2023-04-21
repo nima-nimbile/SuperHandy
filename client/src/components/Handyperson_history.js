@@ -33,7 +33,7 @@ const HandypersonHistory = () => {
           <div className=" collapse navbar-collapse" id="navbarNavDropdown">
             <ul className="navbar-nav ms-auto ">
               <li className="nav-item">
-                <Link className="nav-link mx-2 active" aria-current="page" to="/handyperson">Back</Link>
+                <Link className="nav-link mx-2 active" aria-current="page" to="/handyperson">Your Page</Link>
               </li>
               <li className="nav-item">
                 <Link className="nav-link mx-2" to="/#menu">Logout</Link>

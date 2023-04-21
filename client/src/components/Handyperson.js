@@ -94,7 +94,7 @@ const Handyperson = () => {
               <td> {item.first_name}</td>
               <td>{item.last_name}</td>
               <td>{item.skill_name}</td>
-              <td>{item.create_time}</td>
+              <td>{item.duration}</td>
               <td>${item.price}</td>
               <td>{item.description}</td>
               <td>{item.address}</td>
