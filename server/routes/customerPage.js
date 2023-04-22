@@ -2,7 +2,12 @@ const express = require('express');
 const router = express.Router();
 const db = require('../db');
 
-
+router.get('/', (req, res) => {
+  if (req.session.userType !== "customer"){
+    res.sendStatus(401);
+    return;
+  }
+})
 
 router.post('/', (req, res) => {
   const { selectedTaskOption, selectedStimatedTimeOption, selectedTimeOption, date, description, address } = req.body;

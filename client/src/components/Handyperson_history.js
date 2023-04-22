@@ -28,9 +28,6 @@ const HandypersonHistory = () => {
         console.log(error);
       });
   };
-  useEffect(() => {
-    getDataBase();
-  }, [])
 
   return (
     <div>

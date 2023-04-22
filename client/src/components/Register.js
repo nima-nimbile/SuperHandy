@@ -42,12 +42,12 @@ const Register = () => {
       address,
       userType,
       skill
-    })
+    }, {withCredentials:true})
     .then((response) => {
       if (userType === 'customer') {
         return navigate('/CustomerPage');
       } else if (userType === 'handyperson') {
-        return navigate(`/handyDash/${response.data.userId}`);
+        return navigate(`/handyDash`);
       }
     })
     .catch((error) => {

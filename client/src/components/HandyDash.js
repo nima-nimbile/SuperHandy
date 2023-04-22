@@ -42,10 +42,13 @@ const HandyDash = (props) => {
           </button>
           <div className=" collapse navbar-collapse" id="navbarNavDropdown">
             <ul className="navbar-nav ms-auto ">
-              <li className="nav-item">
-                <Link className="nav-link mx-2 active" aria-current="page" to="/handyperson_history">History</Link>
+            <li className="nav-item">
+                <Link className="nav-link mx-2 active" aria-current="page" to="/handyperson">Job List</Link>
               </li>
-              <button className="nav-link mx-2" onClick={handleLogout}>
+              <li className="nav-item">
+                <Link className="nav-link mx-2 active" aria-current="page" to="/handyperson_history">Job History</Link>
+              </li>
+              <button onClick={handleLogout}>
                   Logout
                 </button>
             </ul>

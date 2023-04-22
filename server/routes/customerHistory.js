@@ -5,6 +5,10 @@ const db = require('../db');
 
 
 router.get("/", async (req, res) => { // Modify the route to "/"" instead of "/:id"
+  if (req.session.userType !== "customer"){
+    res.sendStatus(401);
+    return;
+  }
   try {
     const fetchInfo = await db.query(`
       SELECT 

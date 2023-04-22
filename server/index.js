@@ -29,7 +29,6 @@ const editStatusRoute = require("./routes/editStatus");
 const logoutRoute = require("./routes/logout");
 const customerPageRoute = require("./routes/customerPage");
 const customerHistoryRoute = require("./routes/customerHistory");
-const handyPerNameRoute = require("./routes/handyPerName");
 const deleteRowNameRoute = require("./routes/deleteRow");
 
 app.use('/login', loginRoute);
@@ -40,7 +39,6 @@ app.use('/editStatus', editStatusRoute);
 app.use('/logout', logoutRoute);
 app.use('/customerPage', customerPageRoute);
 app.use('/customerHistory', customerHistoryRoute);
-app.use('/handyPerName', handyPerNameRoute);
 app.use('/deleteRow', deleteRowNameRoute);
 
 
