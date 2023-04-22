@@ -65,6 +65,7 @@ const HandypersonHistory = () => {
             <th>Name</th>
             <th>Task</th>
             <th>Date</th>
+            <th>Duration(hour)</th>
             <th>Price</th>
             <th>Description</th>
             <th>Address</th>
@@ -77,6 +78,7 @@ const HandypersonHistory = () => {
             <tr key={item.order_id}>
               <td>{item.first_name + ' ' +item.last_name}</td>
               <td>{item.skill_name}</td>
+              <td>{item.date}</td>
               <td>{item.duration}</td>
               <td>${item.price}</td>
               <td>{item.description}</td>
