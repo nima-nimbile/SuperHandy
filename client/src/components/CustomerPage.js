@@ -86,11 +86,10 @@ const CustomerPage = (props) => {
       <nav className="nav-customer-page">
         <h1>Customer Page</h1>
         <div className="nav-customer-page-div">
-          <button><NavLink exact to="/">Home</NavLink></button>
           <button><NavLink to="/CustomerHistory">History</NavLink></button>
           <button onClick={handleLogout}>
-Logout
-                </button>
+          Logout
+          </button>
         </div>
       </nav>
 
