@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import HandyPerName from "./HandyPerName";
+import axios from 'axios';
 import "./handyperson.css";
 
 const Handyperson = () => {
   const [todos, setTodos] = useState([]);
+  const [filteredTodos, setFilteredTodos] = useState([]);
 
 
   const getDataBase = async () => {
@@ -12,13 +14,13 @@ const Handyperson = () => {
       const response = await fetch(`http://localhost:5000/orders`);
       const jsonData = await response.json();
       setTodos(jsonData);
+      setFilteredTodos(jsonData.filter((item) => item.status !== "Done"));
     } catch (err) {
       console.log(err.message);
     }
   };
 
   const handleAccept = async (id, status) => {
-
     try {
       // Send update request to backend API
       await fetch(`http://localhost:5000/editStatus/${id}`, {
@@ -27,18 +29,28 @@ const Handyperson = () => {
         body: JSON.stringify({ status }),
       });
       // Update local state with the updated status
-      const updatedTodos = todos.map(item => {
+      const updatedTodos = todos.map((item) => {
         if (item.id === id) {
           return { ...item, status };
         }
         return item;
       });
       setTodos(updatedTodos);
+      setFilteredTodos(updatedTodos.filter((item) => item.status !== "Done"));
     } catch (error) {
       console.error("Failed to update status:", error);
     }
   };
- 
+  const handleLogout = () => {
+    console.log('Logging out...');
+    axios.post('http://localhost:5000/logout', {}, { withCredentials: true })
+      .then((response) => {
+        window.location = '/login';
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
   useEffect(() => {
     getDataBase();
   }, []);
@@ -48,7 +60,7 @@ const Handyperson = () => {
     <div>
       <nav className="navbar navbar-expand-lg navbar-dark bg-dark p-3">
         <div className="container-fluid">
-          <HandyPerName todos={todos} />
+          <HandyPerName />
           <button className="navbar-toggler"
             type="button"
             data-bs-toggle="collapse"
@@ -67,7 +79,9 @@ const Handyperson = () => {
                   to="/handyperson_history">History</Link>
               </li>
               <li className="nav-item">
-                <Link className="nav-link mx-2" to="/#menu">Logout</Link>
+              <button onClick={handleLogout}>
+                  Logout
+                </button>
               </li>
             </ul>
           </div>
@@ -89,7 +103,7 @@ const Handyperson = () => {
           </tr>
         </thead>
         <tbody>
-          {todos.map((item) => (
+          {filteredTodos.map((item) => (
             <tr key={item.id}>
               <td> {item.first_name}</td>
               <td>{item.last_name}</td>

@@ -45,7 +45,7 @@ const HandyDash = (props) => {
               <li className="nav-item">
                 <Link className="nav-link mx-2 active" aria-current="page" to="/handyperson_history">History</Link>
               </li>
-              <button onClick={handleLogout}>
+              <button className="nav-link mx-2" onClick={handleLogout}>
                   Logout
                 </button>
             </ul>

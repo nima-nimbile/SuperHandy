@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-
+import axios from 'axios';
 import './customerHistory.css';
 import { NavLink } from 'react-router-dom';
 import 'react-datepicker/dist/react-datepicker.css';
@@ -7,7 +7,6 @@ import 'react-datepicker/dist/react-datepicker.css';
 
 function CustomerHistory() {
   const [tableData, setTableData] = useState([]);
-  
 
   useEffect(() => {
     async function fetchData() {
@@ -17,6 +16,48 @@ function CustomerHistory() {
     }
     fetchData();
   }, []);
+
+
+ /*  const deleteRow = (id) => {
+    axios.delete(`http://localhost:5000/customerHistory/${id}`)
+      .then(() => {
+        // update state or do other actions after successful deletion
+      })
+      .catch((err) => {
+        // handle error
+      });
+  };
+
+    const handleDeleteClick = () => {
+      deleteRow(id);
+    }; */
+
+    //  const handleDeleteClick = async (id) => {
+    //   try {
+    //     const deleteRow = await fetch(`http://localhost:5000/deleteRow/${id}`, {
+    //       method: "DELETE"
+    //     })
+    //     setTableData(tableData.filter(item => item.row.id !== id))
+    //   } catch (error) {
+    //     console.log(error.message);
+    //   }
+    //  }
+    
+    const handleDeleteClick = async (id) => {
+      try {
+        await axios.delete(`http://localhost:5000/deleteRow/${id}`);
+        console.log(tableData, "tableDataaaaaaaaa")
+        setTableData(prevTableData => {
+          // Filter out the deleted row from the previous state
+          const updatedTableData = prevTableData.filter(item => item.id !== id);
+          
+          // Return the updated state
+          return updatedTableData;
+        });
+      } catch (error) {
+        console.log(error.message);
+      }
+    }
 
 
   return (
@@ -34,7 +75,7 @@ function CustomerHistory() {
         <table>
           <thead>
             <tr>
-              <th>Handyman name</th>
+              <th>Handyperson name</th>
               <th>Task</th>
               <th>Date</th>
               <th>Time</th>
@@ -47,24 +88,24 @@ function CustomerHistory() {
             </tr>
           </thead>
            <tbody>
-             {/* {tableData.map((row)=>(
+              {tableData.map((row)=>(
+                 row && row.id ? (
               <tr key={row.id}>
-                <td>{row.handyman}</td>
-                <td>{row.task}</td>
+                <td>{row.first_name}</td>
+                <td>{row.skill_name}</td>
                 <td>{row.date}</td>
                 <td>{row.time}</td>
                 <td>{row.price}</td>
                 <td>{row.description}</td>
                 <td>{row.status}</td>
-                <td>{row.handyman_contact}</td>
-                <td><button>Delete</button></td>
+                <td>{row.email}</td>
+                <td><button className="btn btn-danger" onClick={() => handleDeleteClick(row.id)} >Delete</button></td>
                 <td><button>Edit</button></td>
               </tr>
-            ))}  */}
+            ) : null ))}
           </tbody> 
         </table>
       </div>
-
 
       </>
       );
