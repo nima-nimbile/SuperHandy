@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-
 import './customerHistory.css';
 import { NavLink } from 'react-router-dom';
 import 'react-datepicker/dist/react-datepicker.css';
@@ -19,6 +18,7 @@ function CustomerHistory() {
   }, []);
 
 
+
   return (
     <>
       <nav className="nav-customer-history">
@@ -34,7 +34,7 @@ function CustomerHistory() {
         <table>
           <thead>
             <tr>
-              <th>Handyman name</th>
+              <th>Handyperson name</th>
               <th>Task</th>
               <th>Date</th>
               <th>Time</th>
@@ -47,24 +47,23 @@ function CustomerHistory() {
             </tr>
           </thead>
            <tbody>
-             {/* {tableData.map((row)=>(
+              {tableData.map((row)=>(
               <tr key={row.id}>
-                <td>{row.handyman}</td>
-                <td>{row.task}</td>
+                <td>{row.first_name}</td>
+                <td>{row.skill_name}</td>
                 <td>{row.date}</td>
                 <td>{row.time}</td>
                 <td>{row.price}</td>
                 <td>{row.description}</td>
                 <td>{row.status}</td>
-                <td>{row.handyman_contact}</td>
+                <td>{row.email}</td>
                 <td><button>Delete</button></td>
                 <td><button>Edit</button></td>
               </tr>
-            ))}  */}
+            ))}
           </tbody> 
         </table>
       </div>
-
 
       </>
       );

@@ -16,7 +16,7 @@ router.post('/', (req, res) => {
   } else if (selectedTaskOption === 'Plumbing') {
     skill_id = 4;
   }
-  let customer_id = 1;
+  let customer_id = 2;
 
   db.query(`INSERT INTO tasks (skill_id, duration, date, time, description, address, customer_id) VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING *`, 
         [skill_id, selectedStimatedTimeOption, date, selectedTimeOption, description, address, customer_id/* customer_id: , req.body.userId */])

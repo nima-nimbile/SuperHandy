@@ -8,16 +8,14 @@ router.get("/", async (req, res) => { // Modify the route to "/"" instead of "/:
   try {
     const fetchInfo = await db.query(`
       SELECT 
-        customers.first_name, 
-        customers.last_name, 
+        handypersons.first_name, 
         skills.skill_name,
-        tasks.create_time, 
+        tasks.date, 
+        tasks.time,
         skills.price, 
         tasks.description, 
-        tasks.address, 
-        customers.email, 
         orders.status,
-        orders.id
+        handypersons.email
       FROM 
         customers 
       JOIN 
@@ -26,15 +24,14 @@ router.get("/", async (req, res) => { // Modify the route to "/"" instead of "/:
         skills ON tasks.skill_id = skills.id 
       JOIN 
         orders ON tasks.id = orders.task_id
-    `); // Remove the WHERE clause that filters by customer id
+      LEFT JOIN
+        handypersons ON orders.handyperson_id = handypersons.id
+    `);
     res.json(fetchInfo.rows);
   } catch (error) {
-    // Handle error
     console.error(error);
   }
 });
-
-
 
 
 module.exports = router;
