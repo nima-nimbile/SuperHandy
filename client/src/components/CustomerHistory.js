@@ -17,7 +17,21 @@ function CustomerHistory() {
     fetchData();
   }, []);
 
-
+  const handleDeleteClick = async (id) => {
+    try {
+      await axios.delete(`http://localhost:5000/deleteRow/${id}`);
+      console.log(tableData, "tableDataaaaaaaaa")
+      setTableData(prevTableData => {
+        // Filter out the deleted row from the previous state
+        const updatedTableData = prevTableData.filter(item => item.id !== id);
+        
+        // Return the updated state
+        return updatedTableData;
+      });
+    } catch (error) {
+      console.log(error.message);
+    }
+  }
   return (
     <>
       <nav className="nav-customer-history">
@@ -46,7 +60,7 @@ function CustomerHistory() {
             </tr>
           </thead>
            <tbody>
-             {/* {tableData.map((row)=>(
+             {tableData.map((row)=>(
               <tr key={row.id}>
                 <td>{row.first_name}</td>
                 <td>{row.skill_name}</td>
@@ -56,10 +70,10 @@ function CustomerHistory() {
                 <td>{row.description}</td>
                 <td>{row.status}</td>
                 <td>{row.handyman_contact}</td>
-                <td><button>Delete</button></td>
+                <td><button className="btn btn-danger" onClick={() => handleDeleteClick(row.id)} >Delete</button></td>
                 <td><button>Edit</button></td>
               </tr>
-            ))}  */}
+            ))} 
           </tbody> 
         </table>
       </div>
