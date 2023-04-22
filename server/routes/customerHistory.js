@@ -15,7 +15,8 @@ router.get("/", async (req, res) => { // Modify the route to "/"" instead of "/:
         skills.price, 
         tasks.description, 
         orders.status,
-        handypersons.email
+        handypersons.email,
+        orders.id
       FROM 
         customers 
       JOIN 

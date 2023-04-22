@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import axios from 'axios';
 import './customerHistory.css';
 import { NavLink } from 'react-router-dom';
 import 'react-datepicker/dist/react-datepicker.css';
@@ -6,7 +7,6 @@ import 'react-datepicker/dist/react-datepicker.css';
 
 function CustomerHistory() {
   const [tableData, setTableData] = useState([]);
-  
 
   useEffect(() => {
     async function fetchData() {
@@ -16,7 +16,6 @@ function CustomerHistory() {
     }
     fetchData();
   }, []);
-
 
 
   return (
@@ -47,7 +46,7 @@ function CustomerHistory() {
             </tr>
           </thead>
            <tbody>
-              {tableData.map((row)=>(
+             {/* {tableData.map((row)=>(
               <tr key={row.id}>
                 <td>{row.first_name}</td>
                 <td>{row.skill_name}</td>
@@ -56,11 +55,11 @@ function CustomerHistory() {
                 <td>{row.price}</td>
                 <td>{row.description}</td>
                 <td>{row.status}</td>
-                <td>{row.email}</td>
+                <td>{row.handyman_contact}</td>
                 <td><button>Delete</button></td>
                 <td><button>Edit</button></td>
               </tr>
-            ))}
+            ))}  */}
           </tbody> 
         </table>
       </div>

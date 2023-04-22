@@ -1,28 +1,26 @@
 import React, { useState, useEffect } from "react";
-const HandyPerName = ({ todos }) => {
-  const [name, setName] = useState("");
+import axios from 'axios';
+
+const HandyPerName = () => {
+  const [name, setName] = useState(null);
+
   useEffect(() => {
-    const fetchData = async () => {
-      try {
-        if (todos.length > 0) {
-          // Extract the ID from the first todo in the todos array
-          const id = todos.map(item => item.id); 
-          const response = await fetch(
-            `http://localhost:5000/handyPerName/${id}`
-          );
-          const jsonData = await response.json();
-          setName(jsonData);
+    axios.get(`http://localhost:5000/handyDash`, {
+      withCredentials: true
+    })
+      .then((response) => {
+        setName(response.data.handyperson);
+      })
+      .catch((error) => {
+        if (error.response.status === 401) {
+          window.location = '/login';
         }
-      } catch (err) {
-        console.log(err.message);
-      }
-    };
-    fetchData();
-  }, [todos]);
-  console.log(name, "nameeeeeee")
+      });
+  }, []);
+console.log(name, "nameeeee")
   return (
     <h1 className="navbar-brand">
-      {name ? `WELCOME! ${name[0].first_name}` : ""}
+      {name ? `WELCOME! ${name.first_name}` : ""}
     </h1>
   );
 };
