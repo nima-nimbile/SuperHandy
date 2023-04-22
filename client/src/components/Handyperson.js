@@ -91,11 +91,11 @@ const Handyperson = () => {
           </div>
         </div>
       </nav>
+      <h1>Job Listings</h1>
       <table className="superhandy-table">
         <thead>
           <tr>
-            <th>First_name</th>
-            <th>Last_name</th>
+            <th>Name</th>
             <th>Task</th>
             <th>Date</th>
             <th>Price</th>
@@ -109,8 +109,7 @@ const Handyperson = () => {
         <tbody>
           {filteredTodos.map((item) => (
             <tr key={item.id}>
-              <td> {item.first_name}</td>
-              <td>{item.last_name}</td>
+              <td>{item.first_name + ' ' +item.last_name}</td>
               <td>{item.skill_name}</td>
               <td>{item.duration}</td>
               <td>${item.price}</td>
