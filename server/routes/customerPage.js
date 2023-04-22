@@ -23,17 +23,22 @@ router.post('/', (req, res) => {
   }
   let customer_id = 2;
 
-  db.query(`INSERT INTO tasks (skill_id, duration, date, time, description, address, customer_id) VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING *`, 
-        [skill_id, selectedStimatedTimeOption, date, selectedTimeOption, description, address, customer_id/* customer_id: , req.body.userId */])
-    
+  db.query(`IINSERT INTO tasks (skill_id, duration, date, time, description, address, customer_id) VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING id`, 
+  [skill_id, selectedStimatedTimeOption, date, selectedTimeOption, description, address, customer_id/* customer_id: , req.body.userId */])
+
     .then((result) => {
-      req.session.userId = result.rows[0].id;
+      const taskId = result.rows[0].id;
+      db.query('INSERT INTO orders (status, task_id) VALUES ($1, $2)', ['pending', taskId])
+      .then(()=> {
+        req.session.userId = taskId;
         res.status(201).json({ success: true, message: 'Your task added successfully. You can see the process in history page...' });
+      })
+      .catch((err) => {
+        res.status(400).json({ success: false, message: err.message });
+      });
     })
     .catch((err) => {
       res.status(400).json({ success: false, message: err.message });
     })
   });
 
-
-module.exports = router;
