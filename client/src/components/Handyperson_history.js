@@ -18,6 +18,7 @@ const HandypersonHistory = () => {
       console.log(err.message)
     }
   };
+  
   const handleLogout = () => {
     console.log('Logging out...');
     axios.post('http://localhost:5000/logout', {}, { withCredentials: true })
@@ -39,8 +40,11 @@ const HandypersonHistory = () => {
           </button>
           <div className=" collapse navbar-collapse" id="navbarNavDropdown">
             <ul className="navbar-nav ms-auto ">
+            <li className="nav-item">
+                <Link className="nav-link mx-2 active" aria-current="page" to="/handyDash">Dashboard</Link>
+              </li>
               <li className="nav-item">
-                <Link className="nav-link mx-2 active" aria-current="page" to="/handyperson">Your Page</Link>
+                <Link className="nav-link mx-2 active" aria-current="page" to="/handyperson">Job List</Link>
               </li>
               <li className="nav-item">
                 <button onClick={handleLogout}>

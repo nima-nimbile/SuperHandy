@@ -25,7 +25,8 @@ router.get("/", async (req, res) => { // Modify the route to "/"" instead of "/:
         skills ON tasks.skill_id = skills.id 
       JOIN 
         orders ON tasks.id = orders.task_id
-    `); // Remove the WHERE clause that filters by customer id
+      WHERE
+      orders.handyperson_id IS NULL OR orders.handyperson_id = $1`, [req.session.userId]); // Remove the WHERE clause that filters by customer id
     res.json(someInfo.rows);
   } catch (error) {
     // Handle error

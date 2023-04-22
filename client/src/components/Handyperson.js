@@ -11,7 +11,7 @@ const Handyperson = () => {
 
   const getDataBase = async () => {
     try {
-      const response = await fetch(`http://localhost:5000/orders`);
+      const response = await fetch(`http://localhost:5000/orders`, {credentials: 'include'});
       const jsonData = await response.json();
       setTodos(jsonData);
       setFilteredTodos(jsonData.filter((item) => item.status !== "Done"));
@@ -24,7 +24,8 @@ const Handyperson = () => {
     try {
       // Send update request to backend API
       await fetch(`http://localhost:5000/editStatus/${id}`, {
-        method: "PUT",
+        method: "POST",
+        credentials: 'include',
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ status }),
       });
@@ -73,10 +74,13 @@ const Handyperson = () => {
           <div className=" collapse navbar-collapse"
             id="navbarNavDropdown">
             <ul className="navbar-nav ms-auto ">
+            <li className="nav-item">
+                <Link className="nav-link mx-2 active" aria-current="page" to="/handyDash">Dashboard</Link>
+              </li>
               <li className="nav-item">
                 <Link className="nav-link mx-2 active"
                   aria-current="page"
-                  to="/handyperson_history">History</Link>
+                  to="/handyperson_history">Job History</Link>
               </li>
               <li className="nav-item">
               <button onClick={handleLogout}>
