@@ -6,14 +6,14 @@ import 'react-datepicker/dist/react-datepicker.css';
 
 
 const CustomerHistory = (props) => {
-  const [customerPage, setCustomerPage] = useState(null);
+  const [tableData, setTableData] = useState([]);
 
   useEffect(() => {
     axios.get(`http://localhost:5000/customerHistory`, {
       withCredentials: true
     })
       .then((response) => {
-        setCustomerPage(response.data.customerPage);
+        setTableData(response.data);
       })
       .catch((error) => {
         if (error.response.status === 401) {
@@ -22,16 +22,7 @@ const CustomerHistory = (props) => {
       });
   }, []);
 
-  const [tableData, setTableData] = useState([]);
 
-  useEffect(() => {
-    async function fetchData() {
-      const response = await fetch('http://localhost:5000/customerHistory');
-      const result = await response.json();
-      setTableData(result);
-    }
-    fetchData();
-  }, []);
 
   const handleDeleteClick = async (id) => {
     try {

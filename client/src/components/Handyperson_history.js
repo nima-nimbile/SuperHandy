@@ -10,7 +10,7 @@ const HandypersonHistory = () => {
 
   const getDataBase = async (e) => {
     try {
-      const response = await fetch(`http://localhost:5000/orders`);
+      const response = await fetch(`http://localhost:5000/handyHistory`, {credentials: 'include'});
       const jsonData = await response.json();
       setTodos(jsonData);
       
@@ -18,6 +18,7 @@ const HandypersonHistory = () => {
       console.log(err.message)
     }
   };
+
   const handleLogout = () => {
     console.log('Logging out...');
     axios.post('http://localhost:5000/logout', {}, { withCredentials: true })
@@ -28,6 +29,10 @@ const HandypersonHistory = () => {
         console.log(error);
       });
   };
+  useEffect(() => {
+    getDataBase();
+  }, []);
+
 
   return (
     <div>
@@ -39,8 +44,11 @@ const HandypersonHistory = () => {
           </button>
           <div className=" collapse navbar-collapse" id="navbarNavDropdown">
             <ul className="navbar-nav ms-auto ">
+            <li className="nav-item">
+                <Link className="nav-link mx-2 active" aria-current="page" to="/handyDash">Dashboard</Link>
+              </li>
               <li className="nav-item">
-                <Link className="nav-link mx-2 active" aria-current="page" to="/handyperson">Your Page</Link>
+                <Link className="nav-link mx-2 active" aria-current="page" to="/handyperson">Job List</Link>
               </li>
               <li className="nav-item">
                 <button onClick={handleLogout}>
@@ -54,10 +62,10 @@ const HandypersonHistory = () => {
       <table className="superhandy-table">
         <thead>
           <tr>
-            <th>First_name</th>
-            <th>Last_name</th>
+            <th>Name</th>
             <th>Task</th>
             <th>Date</th>
+            <th>Duration(hour)</th>
             <th>Price</th>
             <th>Description</th>
             <th>Address</th>
@@ -68,10 +76,10 @@ const HandypersonHistory = () => {
         <tbody>
           {todos.map(item => (
             <tr key={item.order_id}>
-              <td>{item.first_name}</td>
-              <td>{item.last_name}</td>
+              <td>{item.first_name + ' ' +item.last_name}</td>
               <td>{item.skill_name}</td>
-              <td>{item.create_time}</td>
+              <td>{item.date}</td>
+              <td>{item.duration}</td>
               <td>${item.price}</td>
               <td>{item.description}</td>
               <td>{item.address}</td>
