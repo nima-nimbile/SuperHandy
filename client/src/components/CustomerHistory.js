@@ -52,13 +52,14 @@ const CustomerHistory = (props) => {
   };
 
 
+
   return (
     <>
       <nav className="nav-customer-history">
-      <h1>Customer History</h1>
-      <div className="nav-customer-history-div">
+        <h1>Customer History</h1>
+        <div className="nav-customer-history-div">
           <button><NavLink to="/CustomerPage">Add new task</NavLink></button>
-                    <button onClick={handleLogout}>Logout</button>
+          <button onClick={handleLogout}>Logout</button>
         </div>
       </nav>
 
@@ -78,8 +79,8 @@ const CustomerHistory = (props) => {
               <th>Edit</th>
             </tr>
           </thead>
-           <tbody>
-             {tableData.map((row)=>(
+          <tbody>
+            {tableData.map((row) => (
               <tr key={row.id}>
                 <td>{row.first_name}</td>
                 <td>{row.skill_name}</td>
@@ -88,17 +89,26 @@ const CustomerHistory = (props) => {
                 <td>{row.price}</td>
                 <td>{row.description}</td>
                 <td>{row.status}</td>
-                <td>{row.handyman_contact}</td>
-                <td><button className="btn btn-danger" onClick={() => handleDeleteClick(row.id)} >Delete</button></td>
-                <td><button>Edit</button></td>
+                <td>{row.email}</td>
+                {row.status !== 'pending' && (
+                  <>
+                  <td></td>
+                  <td></td>
+                </>
+                )}
+                {row.status === 'pending' && (
+                  <>
+                    <td><button className="btn btn-danger" onClick={() => handleDeleteClick(row.id)}>Delete</button></td>
+                    <td><button>Edit</button></td>
+                  </>
+                )}
               </tr>
-            ))} 
-          </tbody> 
+            ))}
+          </tbody>
         </table>
       </div>
-
-      </>
-      );
-  }
+    </>
+  );
+}
 
   export default CustomerHistory;
