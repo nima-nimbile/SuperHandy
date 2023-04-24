@@ -14,7 +14,6 @@ router.get("/", async (req, res) => { // Modify the route to "/"" instead of "/:
         skills.price, 
         tasks.description, 
         tasks.address, 
-        tasks.date,
         customers.email, 
         orders.status,
         orders.id
@@ -31,10 +30,10 @@ router.get("/", async (req, res) => { // Modify the route to "/"" instead of "/:
       ORDER BY 
         CASE orders.status
         WHEN 'In progress' THEN 0
-        WHEN 'Done' THEN 1
-        ELSE 2
-      END;
-      `, [req.session.userId]); // Remove the WHERE clause that filters by customer id
+      WHEN 'Done' THEN 1
+    ELSE 2
+  END;
+  `, [req.session.userId]); // Remove the WHERE clause that filters by customer id
     res.json(someInfo.rows);
   } catch (error) {
     // Handle error

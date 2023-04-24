@@ -21,6 +21,7 @@ const CustomerPage = (props) => {
         }
       });
   }, []);
+  
   const [selectedTaskOption, setSelectedTaskOption] = useState('');
   const [selectedStimatedTimeOption, setSelectedStimatedTimeOption] = useState('');
   const [selectedTimeOption, setSelectedTimeOption] = useState('');
@@ -50,6 +51,8 @@ const CustomerPage = (props) => {
       date,
       description,
       address
+    }, {
+      withCredentials: true
     })
       .then((response) => {
         return navigate('/CustomerHistory');
