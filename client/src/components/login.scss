@@ -178,7 +178,7 @@ option {
     color: #e5e5e5;
 }
 button{
-    --c: goldenrod;
+    --c: white;
     color: var(--c);
     font-size: 16px;
     border: 0.3em solid var(--c);
@@ -227,7 +227,7 @@ button span:nth-child(4) {
     --n: 4;
 }
 .register {
-    color: goldenrod;
+    color: white;
     font-size: 18px;
   }
   button:hover .register{

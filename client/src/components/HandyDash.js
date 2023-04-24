@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Link } from "react-router-dom"
 import './handyDash.scss';
-import "./handyperson.css";
+import "./handyperson.scss";
 
 const HandyDash = (props) => {
   const [handyPerson, setHandyPerson] = useState(null);
