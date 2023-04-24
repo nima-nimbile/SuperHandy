@@ -1,6 +1,10 @@
 .handyperson-page {
   background-color: black;
   height: 100%;
+  display: flex; /* Add this line to enable flexbox layout */
+  align-items: center; /* Add this line to vertically center the table */
+}
+  
   .superhandy-table {
     border-collapse: collapse;
     width: 100%;
@@ -70,4 +74,3 @@
 h1 {
   text-align: center;
 } 
-}

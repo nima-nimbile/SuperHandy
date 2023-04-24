@@ -23,7 +23,7 @@ const HandypersonHistory = () => {
     console.log('Logging out...');
     axios.post('http://localhost:5000/logout', {}, { withCredentials: true })
       .then((response) => {
-        window.location = '/login';
+        window.location = '/#menu';
       })
       .catch((error) => {
         console.log(error);
