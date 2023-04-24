@@ -5,6 +5,7 @@ const db = require('../db');
 router.delete("/:id", async (req, res) => {
   try {
     const { id } = req.params;
+    console.log("sdnsdjfsjndna", id);
     const deleteRow = await db.query(`DELETE FROM tasks WHERE id = $1`, [id]);
     res.json({ message: 'Row deleted successfully' });
   } catch (error) {

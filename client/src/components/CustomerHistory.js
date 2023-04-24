@@ -23,21 +23,29 @@ const CustomerHistory = (props) => {
   }, []);
 
 
-
-  const handleDeleteClick = async (id) => {
-    try {
-      await axios.delete(`http://localhost:5000/deleteRow/${id}`);
-      console.log(tableData, "tableDataaaaaaaaa")
-      setTableData(prevTableData => {
-        // Filter out the deleted row from the previous state
-        const updatedTableData = prevTableData.filter(item => item.id !== id);
-        
-        // Return the updated state
-        return updatedTableData;
+  const handleDeleteClick = (id) => {
+    // Find the index of the row to be deleted
+    const indexToDelete = tableData.findIndex(row => row.task_id === id);
+    
+    // Create a copy of the table data array
+    const updatedTableData = [...tableData];
+    
+    // Remove the row from the copied array
+    updatedTableData.splice(indexToDelete, 1);
+    
+    // Update the state to remove the row from the UI
+    setTableData(updatedTableData);
+    
+    // Send the delete request to the server
+    axios.delete(`http://localhost:5000/deleteRow/${id}`)
+      .then((response) => {
+        // Do nothing on success
+      })
+      .catch((error) => {
+        console.log(error.message);
+        // If the delete request fails, revert the UI state
+        setTableData(tableData);
       });
-    } catch (error) {
-      console.log(error.message);
-    }
   }
 
   const handleLogout = () => {
@@ -71,6 +79,7 @@ const CustomerHistory = (props) => {
               <th>Task</th>
               <th>Date</th>
               <th>Time</th>
+              <th>During</th>
               <th>Price</th>
               <th>Description</th>
               <th>Status</th>
@@ -81,11 +90,12 @@ const CustomerHistory = (props) => {
           </thead>
           <tbody>
             {tableData.map((row) => (
-              <tr key={row.id}>
+              <tr key={row.task_id}>
                 <td>{row.first_name}</td>
                 <td>{row.skill_name}</td>
                 <td>{row.date}</td>
                 <td>{row.time}</td>
+                <td>{row.duration}</td>
                 <td>{row.price}</td>
                 <td>{row.description}</td>
                 <td>{row.status}</td>
@@ -96,13 +106,13 @@ const CustomerHistory = (props) => {
                   <td></td>
                 </>
                 )}
-                {row.status === 'pending' && (
-                  <>
-                    <td><button className="btn btn-danger" onClick={() => handleDeleteClick(row.id)}>Delete</button></td>
-                    <td><button>Edit</button></td>
-                  </>
-                )}
-              </tr>
+                  {row.status === 'pending' && (
+                    <>
+                      <td><button className="btn btn-danger" onClick={() => handleDeleteClick(row.task_id)}>Delete</button></td>
+                      <td><button>Edit</button></td>
+                    </>
+                  )}
+                </tr>
             ))}
           </tbody>
         </table>

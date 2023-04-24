@@ -1,6 +1,6 @@
 INSERT INTO skills (skill_name, price)
 VALUES 
-  ('general', 60.00),
-  ('electric', 80.00),
-  ('install', 50.00),
-  ('plumb', 70.00);
+  ('general', 35.00),
+  ('electric', 50.00),
+  ('install', 30.00),
+  ('plumb', 45.00);

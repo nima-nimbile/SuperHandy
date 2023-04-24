@@ -3,7 +3,6 @@ const router = express.Router();
 const db = require('../db');
 
 router.get('/', (req, res) => {
-  console.log("cookie id again", req.session.userId)
   if (!req.session.userId){
     res.sendStatus(401);
     return;
