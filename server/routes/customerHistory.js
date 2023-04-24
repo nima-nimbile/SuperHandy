@@ -9,6 +9,7 @@ router.get("/", async (req, res) => { // Modify the route to "/"" instead of "/:
     res.sendStatus(401);
     return;
   }
+  console.log("userid",req.session)
   try {
     const fetchInfo = await db.query(`
     SELECT 

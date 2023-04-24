@@ -31,7 +31,7 @@ router.post('/', (req, res) => {
       const taskId = result.rows[0].id;
       db.query('INSERT INTO orders (status, task_id) VALUES ($1, $2)', ['pending', taskId])
       .then(()=> {
-        req.session.userId = taskId;
+        req.session.taskId = taskId;
         res.status(201).json({ success: true, message: 'Your task added successfully. You can see the process in history page...' });
       })
       .catch((err) => {
