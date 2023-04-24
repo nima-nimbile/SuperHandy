@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import HandyPerName from "./HandyPerName";
 import axios from 'axios';
-import "./handyperson.css";
+import "./handyperson.scss";
 
 const Handyperson = () => {
   const [todos, setTodos] = useState([]);
@@ -58,7 +58,7 @@ const Handyperson = () => {
 
 
   return (
-    <div>
+    <div className="handyperson-page">
       <nav className="navbar navbar-expand-lg navbar-dark bg-dark p-3">
         <div className="container-fluid">
           <HandyPerName />

@@ -1,18 +1,31 @@
 import React, { useState } from 'react';
 import { Link } from "react-router-dom"
 import logo from "./doc/Logo.PNG"
-import "./navbar.css"
+import Login from './Login';
+import Register from './Register';
+import "./navbar.scss"
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const [showLogin, setShowLogin] = useState(false);
+  const [showRegister, setShowRegister] = useState(false);
 
   const toggleMenu = () => {
     setIsOpen(!isOpen);
+    setShowLogin(false);
+    setShowRegister(false)
   }
-  return (
- 
-    <div className="mainOne">
 
+  const handleLoginClick = () => {
+    setShowLogin(true);
+  }
+  const handleRegisterClick = () => {
+    setShowRegister(true);
+  }
+
+  return (
+    <div className='navbar-page'>
+    <div className="mainOne">
       <div className='logo'>
         <img src={logo} alt="logo" width="450" height="350"/>
         <button className="explore" onClick={toggleMenu}><a href="/#menu">Explore More</a></button>
@@ -25,22 +38,29 @@ const Navbar = () => {
             <div className="navOne">
               <ul className="navOne_list">
                 <div className="navOne_list_item">
-                  <li><Link to="/About">About</Link></li>
+                  {showLogin || showRegister ? null : <li><Link to="/About">About</Link></li>}
                 </div>
                 <div className="navOne_list_item">
-                  <li><Link to="/contact">contact Us</Link></li>
+                  {showLogin || showRegister ? null : <li><Link to="/contact">contact Us</Link></li>}
                 </div>
                 <div className="navOne_list_item">
-                  <li><Link to="/login">Login</Link></li>
+                  {showLogin || showRegister ? null : <li><Link to="/#menu" onClick={handleLoginClick}>Login</Link></li>}
                 </div>
                 <div className="navOne_list_item">
-                  <li><Link to="/register">Register</Link></li>
+                  {showLogin || showRegister ? null : <li><Link to="/#menu" onClick={handleRegisterClick}>Register</Link></li>}
                 </div>
               </ul>
             </div>
           </div>
         </div>
       )}
+      {showLogin && (
+        <Login /> 
+      )}
+      {showRegister && (
+        <Register /> 
+      )}
+    </div>
     </div>
   )
 }
