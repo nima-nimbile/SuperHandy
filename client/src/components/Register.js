@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import './register.scss';
-import { useNavigate } from "react-router-dom";
+import './login.scss';
+import { Link, useNavigate } from "react-router-dom";
+import Login from './Login';
 
 const Register = () => {
   const [firstName, setFirstName] = useState('');
@@ -15,6 +16,12 @@ const Register = () => {
   const [skill, setSkill] = useState('');
   const navigate = useNavigate();
   const [errorMessage, setErrorMessage] = useState('');
+  const [showLogin, setShowLogin] = useState(false);
+  
+
+  const handleLoginClick = () => {
+    setShowLogin(true);
+  }
 
   const handleRegister = () => {
     if (
@@ -56,9 +63,11 @@ const Register = () => {
   }
 
   return (
-    <div className="register-page">
-      <div className="form-container">
-        <h3>Register</h3>
+    <div class="register-page-container">
+      {showLogin ? (
+        <Login />
+      ) : (
+      <form>
         <label htmlFor="firstName">First Name</label>
         <input type="text" id="firstName" value={firstName} onChange={(e) => setFirstName(e.target.value)} />
         <label htmlFor="lastName">Last Name</label>
@@ -91,12 +100,15 @@ const Register = () => {
             </select>
           </>
         )}
-        <button onClick={handleRegister}>Register</button>
-        <div>
-          <a href="/login" className="login">Already have account? go to login</a>
-        </div>
+        <button onClick={handleRegister}>Register
+        <span></span><span></span><span></span><span></span>
+        </button> 
+        <button ><Link to="/#menu" className='login'onClick={handleLoginClick}>Login</Link>
+        <span></span><span></span><span></span><span></span>
+        </button>
         {errorMessage && <div className="error-message">{errorMessage}</div>}
-      </div>
+        </form>
+      )}
     </div>
   );
 }
