@@ -55,7 +55,7 @@ function Login() {
           <span></span><span></span><span></span><span></span>
           </button>
           <button>
-            <Link to="/#menu" className='register'onClick={handleRegisterClick}>Register</Link>
+            <Link to="/#menu" className='register'onClick={handleRegisterClick}>Register page</Link>
             <span></span><span></span><span></span><span></span>
             </button>
           {errorMessage && <div className="error-message">{errorMessage}</div>}

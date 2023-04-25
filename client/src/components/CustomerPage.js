@@ -3,6 +3,7 @@ import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import logo from "./doc/Logo.PNG"
 import './customerPage.scss';
+import { Link } from "react-router-dom"
 import ReactDatePicker from "react-datepicker";
 import CustomerName from "./CustomerName";
 
@@ -91,6 +92,11 @@ const CustomerPage = (props) => {
           <div className=" collapse navbar-collapse"
             id="navbarNavDropdown">
             <ul className="navbar-nav ms-auto ">
+            <li className="nav-item">
+                <Link className="nav-link mx-2 active"
+                  aria-current="page"
+                  to="/CustomerHistory">Job List</Link>
+              </li>
               <li className="nav-item">
                 <button type="button" className="btn btn-secondary btn-default" onClick={handleLogout}>
                   Logout

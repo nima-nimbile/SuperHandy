@@ -23,7 +23,8 @@ const Register = () => {
     setShowLogin(true);
   }
 
-  const handleRegister = () => {
+  const handleRegister = (event) => {
+    event.preventDefault();
     if (
       firstName === '' ||
       lastName === '' ||
@@ -38,7 +39,7 @@ const Register = () => {
       setErrorMessage('Please fill all fields');
       return;
     }
-    
+    alert("click on register");
     axios.post('http://localhost:5000/register', {
       firstName,
       lastName,
@@ -103,7 +104,7 @@ const Register = () => {
         <button onClick={handleRegister}>Register
         <span></span><span></span><span></span><span></span>
         </button> 
-        <button ><Link to="/#menu" className='login'onClick={handleLoginClick}>Login</Link>
+        <button ><Link to="/#menu" className='login'onClick={handleLoginClick}>Login Page</Link>
         <span></span><span></span><span></span><span></span>
         </button>
         {errorMessage && <div className="error-message">{errorMessage}</div>}
