@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import axios from 'axios';
 import './customerHistory.css';
 import { NavLink } from 'react-router-dom';
+import { Link } from "react-router-dom"
 import 'react-datepicker/dist/react-datepicker.css';
 
 
@@ -62,12 +63,25 @@ const CustomerHistory = (props) => {
 
 
   return (
-    <>
-      <nav className="nav-customer-history">
-        <h1>Customer History</h1>
-        <div className="nav-customer-history-div">
-          <button><NavLink to="/CustomerPage">Add new task</NavLink></button>
-          <button onClick={handleLogout}>Logout</button>
+    <div className="customer_history-page">
+     <div className="history_page">
+        <nav className="navbar navbar-expand-lg navbar-dark bg-dark p-3">
+        <div className="container-fluid">
+          <div className=" collapse navbar-collapse"
+            id="navbarNavDropdown">
+            <ul className="navbar-nav ms-auto ">
+              <li className="nav-item">
+                <Link className="nav-link mx-2 active"
+                  aria-current="page"
+                  to="/CustomerPage">Your Profile</Link>
+              </li>
+              <li className="nav-item">
+              <button type="button" className="btn btn-secondary btn-default" onClick={handleLogout}>
+                  Logout
+                </button>
+              </li>
+            </ul>
+          </div>
         </div>
       </nav>
 
@@ -117,7 +131,8 @@ const CustomerHistory = (props) => {
           </tbody>
         </table>
       </div>
-    </>
+    </div>
+    </div>
   );
 }
 

@@ -1,54 +1,32 @@
-
-    *,
-    *:before,
-    *:after{
-        padding: 0;
-        margin: 0;
-        box-sizing: border-box;
-    }
-    
-    .background{
-        width: 430px;
-        height: 520px;
-        position: absolute;
-        transform: translate(-50%,-50%);
-        left: 50%;
-        top: 50%;
-    }
-    .background .shape{
-        height: 200px;
-        width: 200px;
-        position: absolute;
-        border-radius: 50%;
-    }
-    .shape:first-child{
-        background: linear-gradient(
-            #1845ad,
-            #23a2f6
-        );
-        left: -80px;
-        top: -80px;
-    }
-    .shape:last-child{
-        background: linear-gradient(
-            to right,
-            #ff512f,
-            #f09819
-        );
-        right: -30px;
-        bottom: -80px;
-    }
+.customer-page{
+    .mainOne {
+        min-height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        scroll-behavior: smooth;
+        background: whiteColor;
+        font-family: "Helvetica Neue", sans-serif;
+        
+      }
+      
+      .logo {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        border-color: whiteColor;
+      }
     form{
-        height: 800px;
+        height: 650px;
         width: 750px;
-        background-color: rgba(255,255,255,0.13);
+        background-color: rgb(69, 68, 68);
         position: absolute;
         transform: translate(-50%,-50%);
-        top: 50%;
+        top: 53%;
         left: 50%;
         border-radius: 10px;
         backdrop-filter: blur(10px);
-        border: 2px solid rgba(255,255,255,0.1);
+        border: 2px solid rgb(69, 68, 68);
         box-shadow: 0 0 40px rgba(8,7,16,0.6);
         padding: 50px 35px;
     }
@@ -58,6 +36,7 @@
         letter-spacing: 0.5px;
         outline: none;
         border: none;
+        
     }
     form h3{
         font-size: 32px;
@@ -98,18 +77,19 @@
         color: #ffffff;
         background-color: #37373e;
     }
+   
     
     ::placeholder{
         color: #e5e5e5;
     }
-    button{
-        --c: white;
+    form button{
+        --c: #f57f25;
         color: var(--c);
         font-size: 16px;
         border: 0.3em solid var(--c);
         border-radius: 0.5em;
         width: 12em;
-        height: 3em;
+        height: 4em;
         text-transform: uppercase;
         font-weight: bold;
         font-family: "Helvetica Neue", sans-serif;
@@ -135,6 +115,7 @@
         transition-delay: calc((var(--n) - 1) * 0.1s);
         z-index: -1;
     }
+    
     button:hover {
         color: black;
     }
@@ -151,11 +132,18 @@
     button span:nth-child(4) {
         --n: 4;
     }
-    .register {
+    .Save {
         color: white;
         font-size: 18px;
       }
-      button:hover .register{
+      button:hover .Save{
+        color: black;
+    }
+    .Reset {
+        color: white;
+        font-size: 18px;
+      }
+      button:hover .Reset{
         color: black;
     }
     .social{
@@ -180,4 +168,9 @@
     .social i{
       margin-right: 4px;
     }
-
+    
+button.btn:hover {
+        border-radius: 25% 10%;
+        background-color: #f57f25;
+      }
+}

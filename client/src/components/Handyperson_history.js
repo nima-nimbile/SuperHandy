@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom"
 import HandyPerName from "./HandyPerName";
 import axios from 'axios';
-import "./handyperson_history.css";
+import "./handyperson_history.scss";;
 
 const HandypersonHistory = () => {
   const [todos, setTodos] = useState([]);
@@ -35,23 +35,28 @@ const HandypersonHistory = () => {
 
 
   return (
-    <div>
-         <nav className="navbar navbar-expand-lg navbar-dark bg-dark p-3">
+    <div className="history_page">
+        <nav className="navbar navbar-expand-lg navbar-dark bg-dark p-3">
         <div className="container-fluid">
-        <HandyPerName/>
-          <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-            <span className="navbar-toggler-icon"></span>
-          </button>
-          <div className=" collapse navbar-collapse" id="navbarNavDropdown">
+          <HandyPerName />
+          <div className=" collapse navbar-collapse"
+            id="navbarNavDropdown">
             <ul className="navbar-nav ms-auto ">
             <li className="nav-item">
                 <Link className="nav-link mx-2 active" aria-current="page" to="/handyDash">Dashboard</Link>
               </li>
               <li className="nav-item">
-                <Link className="nav-link mx-2 active" aria-current="page" to="/handyperson">Job List</Link>
+                <Link className="nav-link mx-2 active"
+                  aria-current="page"
+                  to="/handyperson">Job List</Link>
               </li>
               <li className="nav-item">
-                <button onClick={handleLogout}>
+                <Link className="nav-link mx-2 active"
+                  aria-current="page"
+                  to="/handyperson_history">Your History</Link>
+              </li>
+              <li className="nav-item">
+              <button type="button" className="btn btn-secondary btn-default" onClick={handleLogout}>
                   Logout
                 </button>
               </li>
