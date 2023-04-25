@@ -95,7 +95,7 @@ const CustomerHistory = (props) => {
               <th>Price</th>
               <th>Description</th>
               <th>Status</th>
-              <th>Handyman contact</th>
+              <th>Handyperson contact</th>
               <th>Delete</th>
               <th>Edit</th>
             </tr>
