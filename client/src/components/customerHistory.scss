@@ -7,7 +7,7 @@
         margin: 0 auto;
         font-family: "Helvetica Neue", sans-serif;
         margin-top: 1%;
-        font-size: 18px;
+        font-size: px;
         max-height: 100%; /* adjust the height as needed /
         overflow-y: auto; / add scrollbar when content exceeds max-height */
         }
@@ -62,15 +62,15 @@
       margin-top: 10px;
     }
     
-    .accept {
-      background-color: #3f51b5;
+    td .btn {
+      background-color: #f61a1a;
       color: white;
       padding: 5px 10px;
       border: none;
       cursor: pointer;
       transition-duration: 2s;
     }
-    .accept:hover{
+    td .btn:hover{
       background-color: #000000;
       border: 3px solid rgb(0, 0, 0);
     }

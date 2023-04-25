@@ -1,5 +1,5 @@
 
-import './about.css';
+import './about.scss';
 import React from 'react';
 import Mahnaz from "./doc/Mahnaz.jpg";
 import Nima from "./doc/Nima.jpg";
@@ -9,7 +9,7 @@ import emailIcon from "./doc/email.jpg";
 
 function About() {
   return (
-    <>
+    <div className='about'>
     <div className="about-section">
       <h1>About Us</h1>
       <br/>
@@ -69,7 +69,7 @@ function About() {
       </div>
     </div>
     <p><a href="/Contact"><button className="button1">Contact</button></a></p>
-    </>
+    </div>
   );
 }
 
