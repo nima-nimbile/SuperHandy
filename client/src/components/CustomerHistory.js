@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
 import axios from 'axios';
-import './customerHistory.css';
-import { NavLink } from 'react-router-dom';
+import './customerHistory.scss';
 import { Link } from "react-router-dom"
 import 'react-datepicker/dist/react-datepicker.css';
+import CustomerName from "./CustomerName";
 
 
 const CustomerHistory = (props) => {
@@ -63,17 +63,17 @@ const CustomerHistory = (props) => {
 
 
   return (
-    <div className="customer_history-page">
-     <div className="history_page">
+    <div className="customer_history_page">
         <nav className="navbar navbar-expand-lg navbar-dark bg-dark p-3">
         <div className="container-fluid">
+          <CustomerName />
           <div className=" collapse navbar-collapse"
             id="navbarNavDropdown">
             <ul className="navbar-nav ms-auto ">
               <li className="nav-item">
                 <Link className="nav-link mx-2 active"
                   aria-current="page"
-                  to="/CustomerPage">Your Profile</Link>
+                  to="/CustomerPage">Create a Task</Link>
               </li>
               <li className="nav-item">
               <button type="button" className="btn btn-secondary btn-default" onClick={handleLogout}>
@@ -84,9 +84,7 @@ const CustomerHistory = (props) => {
           </div>
         </div>
       </nav>
-
-      <div className="customer-history">
-        <table>
+        <table className="customer-history" >
           <thead>
             <tr>
               <th>Handyperson name</th>
@@ -130,8 +128,6 @@ const CustomerHistory = (props) => {
             ))}
           </tbody>
         </table>
-      </div>
-    </div>
     </div>
   );
 }

@@ -41,9 +41,6 @@ const HandyDash = (props) => {
           <div className=" collapse navbar-collapse"
             id="navbarNavDropdown">
             <ul className="navbar-nav ms-auto ">
-            <li className="nav-item">
-                <Link className="nav-link mx-2 active" aria-current="page" to="/handyDash">Dashboard</Link>
-              </li>
               <li className="nav-item">
                 <Link className="nav-link mx-2 active"
                   aria-current="page"

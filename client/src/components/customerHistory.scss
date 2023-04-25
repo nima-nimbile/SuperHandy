@@ -1,18 +1,18 @@
-.customer_history-page {
+.customer_history_page {
     background-color: black;
-      .superhandy-table {
+      .customer-history {
         border-collapse: collapse;
         width: 100%;
         max-width: 100%;
         margin: 0 auto;
         font-family: "Helvetica Neue", sans-serif;
         margin-top: 1%;
-        font-size: 14px;
+        font-size: 18px;
         max-height: 100%; /* adjust the height as needed /
         overflow-y: auto; / add scrollbar when content exceeds max-height */
         }
     
-    .superhandy-table th {
+    .customer-history th {
       background-color: black;
       color: white;
       font-weight: bold;
@@ -22,7 +22,7 @@
       
     }
     
-    .superhandy-table td {
+    .customer-history td {
       background-color: #f57f25;
       color: black;
       padding: 10px;
@@ -30,21 +30,21 @@
       border-right: 1px solid #ddd;
     }
     
-    .superhandy-table tr {
+    .customer-history tr {
       border-bottom: 1px solid #ddd;
     }
     
-    .superhandy-table td:last-child,
-    .superhandy-table th:last-child {
+    .customer-history td:last-child,
+    .customer-history th:last-child {
       border-right: none;
     }
     
-    .superhandy-table .done {
+    .customer-history .done {
       background-color: green;
       color: white;
     }
     
-    .superhandy-table .in-progress {
+    .customer-history .in-progress {
       background-color: yellow;
       color: black;
     }

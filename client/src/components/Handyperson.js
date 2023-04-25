@@ -82,7 +82,6 @@ const Handyperson = () => {
           </div>
         </div>
       </nav>
-      {/* <h1>Job Listings</h1> */}
       <table className="superhandy-table">
         <thead>
           <tr>
