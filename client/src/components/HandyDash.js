@@ -3,6 +3,7 @@ import axios from 'axios';
 import { Link } from "react-router-dom"
 import './handyDash.scss';
 import "./handyperson.scss";
+import HandyPerName from "./HandyPerName";
 
 const HandyDash = (props) => {
   const [handyPerson, setHandyPerson] = useState(null);
@@ -33,46 +34,82 @@ const HandyDash = (props) => {
   };
 
   return (
-    <div>
+    <div className='handy_dash-page'>
       <nav className="navbar navbar-expand-lg navbar-dark bg-dark p-3">
         <div className="container-fluid">
-          <h1 className="navbar-brand">Handyperson</h1>
-          <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <div className=" collapse navbar-collapse" id="navbarNavDropdown">
+          <HandyPerName />
+          <div className=" collapse navbar-collapse"
+            id="navbarNavDropdown">
             <ul className="navbar-nav ms-auto ">
-            <li className="nav-item">
-                <Link className="nav-link mx-2 active" aria-current="page" to="/handyperson">Job List</Link>
+              <li className="nav-item">
+                <Link className="nav-link mx-2 active"
+                  aria-current="page"
+                  to="/handyperson">Job List</Link>
               </li>
               <li className="nav-item">
-                <Link className="nav-link mx-2 active" aria-current="page" to="/handyperson_history">Job History</Link>
+                <Link className="nav-link mx-2 active"
+                  aria-current="page"
+                  to="/handyperson_history">Your History</Link>
               </li>
-              <button onClick={handleLogout}>
+              <li className="nav-item">
+              <button type="button" class="btn btn-secondary btn-default" onClick={handleLogout}>
                   Logout
                 </button>
+              </li>
             </ul>
           </div>
         </div>
       </nav>
-      <div className="handy-dash">
-        {handyPerson && (
-          <>
-            <h1 className="handy-dash__title">{handyPerson.first_name} {handyPerson.last_name}'s Profile</h1>
-            <div className="handy-dash__info">
-              <p className="handy-dash__info-item"><span>Email:</span> {handyPerson.email}</p>
-              <p className="handy-dash__info-item"><span>Phone Number:</span> {handyPerson.phone_number}</p>
-              <p className="handy-dash__info-item"><span>Username:</span> {handyPerson.username}</p>
-              <p className="handy-dash__info-item"><span>Address:</span> {handyPerson.address}</p>
-              <p className="handy-dash__info-item"><span>Rating:</span> {handyPerson.rating}</p>
-              <p className="handy-dash__info-item"><span>Skill:</span> {handyPerson.skill_name}</p>
-              <p className="handy-dash__info-item"><span>Price:</span> {handyPerson.price}</p>
+      {handyPerson && (
+        <div className="page-content page-container" id="page-content">
+          <div className="padding">
+            <div className="row container d-flex justify-content-center">
+              <div className="col-xl-6 col-md-12">
+                <div className="card user-card-full">
+                  <div className="row m-l-0 m-r-0">
+                    <div className="col-sm-4 bg-c-lite-green user-profile">
+                      <div className="card-block text-center text-white">
+                        <div className="m-b-25">
+                        </div>
+                        <h6 className="f-w-600">{handyPerson.first_name} {handyPerson.last_name}</h6>
+                        <h4>{handyPerson.skill_name}</h4>
+                        <i className=" mdi mdi-square-edit-outline feather icon-edit m-t-10 f-16"></i>
+                      </div>
+                    </div>
+                    <div className="col-sm-8">
+                      <div className="card-block">
+                        <h6 className="m-b-20 p-b-5 b-b-default f-w-600">Information</h6>
+                        <div className="row">
+                          <div className="col-sm-6">
+                            <p className="m-b-10 f-w-600">Email</p>
+                            <h5 className="text-muted f-w-400">{handyPerson.email}</h5>
+                          </div>
+                          <div className="col-sm-6">
+                            <p className="m-b-10 f-w-600">Phone</p>
+                            <h5 className="text-muted f-w-400">{handyPerson.phone_number}</h5>
+                          </div>
+                        </div>
+                        <div className="row">
+                          <div className="col-sm-6">
+                            <p className="m-b-10 f-w-600">Address</p>
+                            <h5 className="text-muted f-w-400">{handyPerson.address}</h5>
+                          </div>
+                          <div className="col-sm-6">
+                            <p className="m-b-10 f-w-600">Rating</p>
+                            <h5 className="text-muted f-w-400">{handyPerson.rating}</h5>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
-          </>
-        )}
-      </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 };
-  
+
 export default HandyDash;

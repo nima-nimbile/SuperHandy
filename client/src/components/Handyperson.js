@@ -62,15 +62,6 @@ const Handyperson = () => {
       <nav className="navbar navbar-expand-lg navbar-dark bg-dark p-3">
         <div className="container-fluid">
           <HandyPerName />
-          <button className="navbar-toggler"
-            type="button"
-            data-bs-toggle="collapse"
-            data-bs-target="#navbarNavDropdown"
-            aria-controls="navbarNavDropdown"
-            aria-expanded="false"
-            aria-label="Toggle navigation">
-            <span className="navbar-toggler-icon"></span>
-          </button>
           <div className=" collapse navbar-collapse"
             id="navbarNavDropdown">
             <ul className="navbar-nav ms-auto ">
@@ -80,10 +71,10 @@ const Handyperson = () => {
               <li className="nav-item">
                 <Link className="nav-link mx-2 active"
                   aria-current="page"
-                  to="/handyperson_history">Job History</Link>
+                  to="/handyperson_history">Your History</Link>
               </li>
               <li className="nav-item">
-              <button onClick={handleLogout}>
+              <button type="button" class="btn btn-secondary btn-default" onClick={handleLogout}>
                   Logout
                 </button>
               </li>
@@ -91,7 +82,6 @@ const Handyperson = () => {
           </div>
         </div>
       </nav>
-      <h1>Job Listings</h1>
       <table className="superhandy-table">
         <thead>
           <tr>
