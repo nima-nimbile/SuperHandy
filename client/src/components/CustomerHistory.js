@@ -97,7 +97,6 @@ const CustomerHistory = (props) => {
               <th>Status</th>
               <th>Handyperson contact</th>
               <th>Delete</th>
-              <th>Edit</th>
             </tr>
           </thead>
           <tbody>
@@ -121,7 +120,6 @@ const CustomerHistory = (props) => {
                   {row.status === 'pending' && (
                     <>
                       <td><button className="btn btn-danger" onClick={() => handleDeleteClick(row.task_id)}>Delete</button></td>
-                      <td><button>Edit</button></td>
                     </>
                   )}
                 </tr>
