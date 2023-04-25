@@ -13,6 +13,8 @@ import {
   createBrowserRouter,
   RouterProvider,
 } from "react-router-dom";
+import About from './components/About';
+import Contact from './components/Contact';
 
 
 
@@ -48,6 +50,14 @@ const router = createBrowserRouter([
   {
     path: "/",
     element: <Navbar/>,
+  },
+  {
+    path: "/About",
+    element: <About/>,
+  },
+  {
+    path: "/Contact",
+    element: <Contact/>,
   }
 
 ]);

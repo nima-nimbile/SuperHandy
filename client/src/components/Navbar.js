@@ -38,10 +38,10 @@ const Navbar = () => {
             <div className="navOne">
               <ul className="navOne_list">
                 <div className="navOne_list_item">
-                  {showLogin || showRegister ? null : <li><Link to="/About">About</Link></li>}
+                  {showLogin || showRegister ? null : <li><Link to="/about">About</Link></li>}
                 </div>
                 <div className="navOne_list_item">
-                  {showLogin || showRegister ? null : <li><Link to="/contact">contact Us</Link></li>}
+                  {showLogin || showRegister ? null : <li><Link to="/contact">Contact Us</Link></li>}
                 </div>
                 <div className="navOne_list_item">
                   {showLogin || showRegister ? null : <li><Link to="/#menu" onClick={handleLoginClick}>Login</Link></li>}

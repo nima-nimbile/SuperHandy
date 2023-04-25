@@ -68,3 +68,13 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 ### `npm run build` fails to minify
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+
+### `npm install express cors nodemailer`
+
+This is for simplifies sending emails with Node.js using SMTP.
+
+### `npm install react-datepicker --save`
+
+This is a npm code for install date picker to your project. It is for useing easier to add date by calendar.
+
+

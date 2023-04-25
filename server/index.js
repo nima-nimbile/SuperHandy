@@ -31,6 +31,8 @@ const customerPageRoute = require("./routes/customerPage");
 const customerHistoryRoute = require("./routes/customerHistory");
 const deleteRowNameRoute = require("./routes/deleteRow");
 const handyHistoryRoute = require("./routes/handyHistory");
+const aboutRoute = require("./routes/about");
+const contactRoute = require("./routes/contact");
 
 app.use('/login', loginRoute);
 app.use('/register', registerRoute);
@@ -42,6 +44,8 @@ app.use('/customerPage', customerPageRoute);
 app.use('/customerHistory', customerHistoryRoute);
 app.use('/deleteRow', deleteRowNameRoute);
 app.use('/handyHistory', handyHistoryRoute);
+app.use('/about', aboutRoute);
+app.use('/contact', contactRoute);
 
 
 app.listen(5000,()=>{
