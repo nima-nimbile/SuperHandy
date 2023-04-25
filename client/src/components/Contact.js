@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import './contact.css';
+import './contact.scss';
 import contactImg from "./doc/contact.png";
 
 
@@ -26,7 +26,7 @@ const ContactForm = () => {
     alert(result.status);
   };
   return (
-    <div>
+    <div className="contact">
     <form onSubmit={handleSubmit}>
   <div className="container">
     <div style={{ textAlign: "center" }}>
