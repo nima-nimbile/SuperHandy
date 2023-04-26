@@ -19,7 +19,7 @@ const CustomerPage = (props) => {
       })
       .catch((error) => {
         if (error.response.status === 401) {
-          window.location = '/login';
+          window.location = '/#menu';
         }
       });
   }, []);
