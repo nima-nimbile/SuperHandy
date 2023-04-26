@@ -114,7 +114,6 @@ const CustomerHistory = (props) => {
                 {row.status !== 'pending' && (
                   <>
                   <td></td>
-                  <td></td>
                 </>
                 )}
                   {row.status === 'pending' && (
