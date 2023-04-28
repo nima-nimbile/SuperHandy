@@ -3,8 +3,7 @@
 
 SuperHandy is a collaborative final project created by Nima, Yuqin, and Mahnaz using Express, React, Node.js, Axios, Ajax, PostgreSQL, and Bootstrap in one week. This project aims to provide an easy and convenient way for customers in Vancouver to book a handyman to fix or install items at a set price. With SuperHandy, customers can easily choose a time and schedule an appointment with just a few clicks. The app is similar to the Angi app in terms of functionality and features. The project is designed to be user-friendly and efficient, and is open-source and available on GitHub for anyone to view and contribute to.
 
-https://www.loom.com/share/367444270d7b4459b58900337c9bddcb
-https://www.loom.com/share/c0b6221f844b470c8afc239e6adab596
+https://www.loom.com/share/b4fb457dfa944e8fa5a1c0b991599981
 
 # Getting Started with Create React App
 
